@@ -1,0 +1,81 @@
+<! See Copyright Notice in license.html>
+<html>
+
+<head>
+<title>LuaLogging: A simple API to use logging features in Lua</title>
+<style type="text/css">
+ul { list-style-type: disc };
+</style>
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<center>
+<table border=0 cellspacing=2 cellpadding=2>
+<tr><td align=center><a href="http://www.keplerproject.org/lualogging">
+<img border=0 alt="LuaLogging logo" src="../lualogging-128.png"></a>
+<tr><td align=center><big><b>LuaLogging</b></big>
+<tr><td align=center valign=top>A simple API to use logging features in Lua
+</table>
+</center>
+<p>
+
+<center><small>
+<a href="..">home</a> &middot;
+<a href="../manual">manual</a> &middot;
+<a href="#example">example</a> &middot;
+<a href="../console">console</a> &middot;
+<a href="../email">email</a> &middot;
+<a href="../file">file</a> &middot;
+socket &middot;
+<a href="../sql">sql</a>
+</small></center>
+<p>
+
+<hr>
+
+<h2>Socket appender</h2>
+
+This appender can be used to send log requests through a socket.
+Socket appender relies on <a href="http://www.tecgraf.puc-rio.br/luasocket">LuaSocket</a> to do its job.<br>
+Upon each log request a connection is opened, the message is sent and the connection is closed.
+<p>
+<code>
+function logging.socket(address, port [, logPattern])
+</code>
+</p>
+
+<ul>
+  <li><code>address</code>:<br>
+  Address can be an IP address or a host name for which the log message will be sent.<br>
+
+  <li><code>port</code>:<br>
+  The port must be an integer number in the range [1..64K).<br>
+
+  <li><code>logPattern</code>:<br>
+  A pattern can be specified to control how the message is written.<br>
+  The default value is <code>"%date %level %message\n"</code>.<br>
+</ul>
+
+<a name="example"></a>
+<h3>Example</h3>
+
+<pre>
+<code>
+require"logging.socket"
+
+local logger = logging.socket("localhost", 5000)
+
+logger:info("logging.socket test")
+logger:debug("debugging...")
+logger:error("error!")
+</code>
+</pre>
+
+<hr>
+<small>
+$Id: socket.html,v 1.1 2004-11-16 16:33:10 tuler Exp $
+</small>
+
+</body>
+</html> 
