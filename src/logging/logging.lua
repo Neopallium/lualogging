@@ -1,5 +1,5 @@
 -------------------------------------------------------------------------------
--- $Id: logging.lua,v 1.1 2004-11-16 16:33:10 tuler Exp $
+-- $Id: logging.lua,v 1.2 2004-11-23 10:54:10 tuler Exp $
 -- includes a new tostring function that handles tables recursively
 --
 -- Authors:
@@ -108,11 +108,7 @@ function Public.tostring(value)
 
   if (type(value) ~= 'table') then
     if (type(value) == 'string') then
-      if (string.find(value, '"')) then
-        str = '[['..value..']]'
-      else
-        str = '"'..value..'"'
-      end
+      str = string.format("%q", value)
     else
       str = tostring(value)
     end
