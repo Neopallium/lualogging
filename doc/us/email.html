@@ -1,48 +1,48 @@
-<! See Copyright Notice in license.html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2//EN">
 <html>
-
 <head>
-<title>LuaLogging: A simple API to use logging features in Lua</title>
+<meta name="generator" content="HTML Tidy, see www.w3.org">
+<title>LuaLogging: A simple API to use logging features in
+Lua</title>
 <style type="text/css">
 ul { list-style-type: disc };
 </style>
 </head>
-
 <body bgcolor="#FFFFFF">
-
 <center>
-<table border=0 cellspacing=2 cellpadding=2>
-<tr><td align=center><a href="http://www.keplerproject.org/lualogging">
-<img border=0 alt="LuaLogging logo" src="../lualogging-128.png"></a>
-<tr><td align=center><big><b>LuaLogging</b></big>
-<tr><td align=center valign=top>A simple API to use logging features in Lua
+<table border="0" cellspacing="2" cellpadding="2">
+<tr>
+<td align="center"><a href=
+"http://www.keplerproject.org/lualogging"><img border="0" alt=
+"LuaLogging logo" src="../lualogging-128.png"></a> </td>
+</tr>
+
+<tr>
+<td align="center"><big><b>LuaLogging</b></big> </td>
+</tr>
+
+<tr>
+<td align="center" valign="top">A simple API to use logging
+features in Lua</td>
+</tr>
 </table>
 </center>
-<p>
 
-<center><small>
-<a href="..">home</a> &middot;
-<a href="../manual">manual</a> &middot;
-<a href="#example">example</a> &middot;
-<a href="../console">console</a> &middot;
-email &middot;
-<a href="../file">file</a> &middot;
-<a href="../socket">socket</a> &middot;
-<a href="../sql">sql</a>
-</small></center>
-<p>
+<center><small><a href="..">home</a> &middot; <a href=
+"../manual">manual</a> &middot; <a href="#example">example</a>
+&middot; <a href="../console">console</a> &middot; email &middot;
+<a href="../file">file</a> &middot; <a href="../socket">socket</a>
+&middot; <a href="../sql">sql</a></small></center>
 
 <hr>
-
 <h2>Email appender</h2>
 
-This appender can be used to send log requests through email.
-One email message is sent for each log request. This is usually used to log <code>error</code> 
-events.
+This appender can be used to send log requests through email. One
+email message is sent for each log request. This is usually used to
+log <code>error</code> events. 
 
 <pre>
-<code>
-function logging.email {
+<code>function logging.email {
   from = <i>string</i>,
   rcpt = <i>string</i> or <i>string-table</i>,
   [user = <i>string</i>,]
@@ -57,48 +57,51 @@ function logging.email {
 </pre>
 
 <ul>
-  <li><code>from</code>:<br>
-  The sender of the email message.
-  
-  <li><code>rcpt</code>: <br>
-  The recipient of the email message
-  <li><code>user</code>: <br>
-  User for authentication.
+<li><code>from</code>:<br>
+ The sender of the email message.</li>
 
-  <li><code>password</code>: <br>
-  Password for authentication.
+<li><code>rcpt</code>:<br>
+ The recipient of the email message</li>
 
-  <li><code>server</code>: <br>
-  Server to connect to. Default is <code>"localhost"</code>.
+<li><code>user</code>:<br>
+ User for authentication.</li>
 
-  <li><code>port</code>: <br>
-  Port to connect to. Default is <code>25</code>.
-  
-  <li><code>domain</code>: <br>
-  Domain name used to greet the server. Defaults to the local machine host name.
+<li><code>password</code>:<br>
+ Password for authentication.</li>
 
-  <li><code>headers.to</code>: <br>
-  The recipient of the message, as an extended description.
+<li><code>server</code>:<br>
+ Server to connect to. Default is <code>"localhost"</code>.</li>
 
-  <li><code>headers.from</code>: <br>
-  The sender of the message, as an extended description.
+<li><code>port</code>:<br>
+ Port to connect to. Default is <code>25</code>.</li>
 
-  <li><code>headers.subject</code>: <br>
-  The subject of the message sent. This can contain patterns like the <code>logPattern</code>
-  parameter.
+<li><code>domain</code>:<br>
+ Domain name used to greet the server. Defaults to the local
+machine host name.</li>
 
-  <li><code>logPattern</code>: <br>
-  A pattern can be specified to control how the message is written.<br>
-  The default value is <code>"%date %level %message\n"</code>.<br>
+<li><code>headers.to</code>:<br>
+ The recipient of the message, as an extended description.</li>
 
+<li><code>headers.from</code>:<br>
+ The sender of the message, as an extended description.</li>
+
+<li><code>headers.subject</code>:<br>
+ The subject of the message sent. This can contain patterns like
+the <code>logPattern</code> parameter.</li>
+
+<li><code>logPattern</code>:<br>
+ A pattern can be specified to control how the message is
+written.<br>
+ The default value is <code>"%date %level %message\n"</code>.<br>
+</li>
 </ul>
 
-<a name="example"></a>
+<a name="example"></a> 
+
 <h3>Example</h3>
 
 <pre>
-<code>
-require"logging.email"
+<code>require"logging.email"
 
 local logger = logging.email {
                                rcpt = "mail@host.com",
@@ -115,9 +118,8 @@ logger:error("error!")
 </pre>
 
 <hr>
-<small>
-$Id: email.html,v 1.1 2004-11-16 16:33:10 tuler Exp $
-</small>
-
+<small>$Id: index.html,v 1.1 2004/11/16 16:33:10 tuler Exp
+$</small>
 </body>
-</html> 
+</html>
+

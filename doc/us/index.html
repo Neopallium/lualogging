@@ -1,132 +1,146 @@
-<! See Copyright Notice in license.html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2//EN">
 <html>
-
 <head>
-<title>LuaLogging: A simple API to use logging features in Lua</title>
+<meta name="generator" content="HTML Tidy, see www.w3.org">
+<title>LuaLogging: A simple API to use logging features in
+Lua</title>
 <style type="text/css">
 ul { list-style-type: disc };
 </style>
 </head>
-
 <body bgcolor="#FFFFFF">
-
 <center>
-<table border=0 cellspacing=2 cellpadding=2>
-<tr><td align=center><a href="http://www.keplerproject.org/lualogging">
-<img border=0 alt="LuaLogging logo" src="lualogging-128.png"></a>
-<tr><td align=center><big><b>LuaLogging</b></big>
-<tr><td align=center valign=top>A simple API to use logging features in Lua
+<table border="0" cellspacing="2" cellpadding="2">
+<tr>
+<td align="center"><a href=
+"http://www.keplerproject.org/lualogging"><img border="0" alt=
+"LuaLogging logo" src="lualogging-128.png"></a> </td>
+</tr>
+
+<tr>
+<td align="center"><big><b>LuaLogging</b></big> </td>
+</tr>
+
+<tr>
+<td align="center" valign="top">A simple API to use logging
+features in Lua</td>
+</tr>
 </table>
 </center>
-<p>
 
-<center><small>
-<a href=#over>overview</a> &middot;
-<a href=#version>current version</a> &middot;
-<a href=#download>download</a> &middot;
-<a href=#new>news</a> &middot;
-<a href=#installation>installation</a> &middot;
-<a href="manual">manual</a> &middot;
-<a href="license.html">license</a> &middot;
-<a href="#hist">history</a> &middot;
-<a href="#contact">contact</a>
-</small></center>
-<p>
+<center><small><a href="#over">overview</a> &middot; <a href=
+"#version">current version</a> &middot; <a href=
+"#download">download</a> &middot; <a href="#new">news</a> &middot;
+<a href="#installation">installation</a> &middot; <a href=
+"manual">manual</a> &middot; <a href="license.html">license</a>
+&middot; <a href="#hist">history</a> &middot; <a href=
+"#contact">contact</a></small></center>
 
 <hr>
-
 <h2>Contents</h2>
 
 <ul>
-  <li> <a href=#over>Overview</a>
-  <li> <a href=#version>Current Version</a>
-  <li> <a href=#download>Download</a>
-  <li> <a href=#new>What's new</a>
-  <li> <a href=#installation>Installation</a>
-  <li> <a href="manual">User's manual</a>
-    <ul>
-      <li> <a href="console">Console</a>
-      <li> <a href="file">File</a>
-      <li> <a href="sql">SQL</a>
-      <li> <a href="socket">Socket</a>
-      <li> <a href="email">Email</a>
-    </ul>
-  <li> <a href="license.html">Copyright &amp; License</a>
-  <li> <a href=#hist>History</a>
-  <li> <a href=#contact>Contact</a>
+<li><a href="#over">Overview</a></li>
+
+<li><a href="#version">Current Version</a></li>
+
+<li><a href="#download">Download</a></li>
+
+<li><a href="#new">What's new</a></li>
+
+<li><a href="#installation">Installation</a></li>
+
+<li><a href="manual">User's manual</a> 
+
+<ul>
+<li><a href="console">Console</a></li>
+
+<li><a href="file">File</a></li>
+
+<li><a href="sql">SQL</a></li>
+
+<li><a href="socket">Socket</a></li>
+
+<li><a href="email">Email</a></li>
+</ul>
+</li>
+
+<li><a href="license.html">Copyright &amp; License</a></li>
+
+<li><a href="#hist">History</a></li>
+
+<li><a href="#contact">Contact</a></li>
 </ul>
 
+<a name="over"></a> 
 
-<a name=over></a>
 <h2>Overview</h2>
-<p>
-LuaLogging provides a simple API to use logging features in Lua. Its design was based on <a href="http://logging.apache.org/log4j/docs/index.html">log4j</a>.
-</p>
-<p>
 
-</p>
-LuaLogging currently supports console, file, email, socket and sql outputs.
-<p>
-LuaLogging is free software and uses the same
-<a href="license.html">license</a>
-as Lua 5.0. It is part of the <a href="http://www.keplerproject.org">Kepler Project</a>.
+<p>LuaLogging provides a simple API to use logging features in Lua.
+Its design was based on <a href=
+"http://logging.apache.org/log4j/docs/index.html">log4j</a>.</p>
 
+LuaLogging currently supports console, file, email, socket and sql
+outputs. 
 
-<a name=version></a>
+<p>LuaLogging is free software and uses the same <a href=
+"license.html">license</a> as Lua 5.0. It is part of the <a href=
+"http://www.keplerproject.org">Kepler Project</a>. <a name=
+"version"></a></p>
+
 <h2>Current version</h2>
-<p>
-Current version is 1.1.0. It was developed for Lua 5.0.
-</p>
 
+<p>Current version is 1.1.0. It was developed for Lua 5.0.</p>
 
-<a name=download></a>
+<a name="download"></a> 
+
 <h2>Download</h2>
 
-LuaLogging can be downloaded from the its <a href="http://luaforge.net/project/showfiles.php?group_id=51">Lua Forge</a> page.<p>
+LuaLogging can be downloaded from the its <a href=
+"http://luaforge.net/project/showfiles.php?group_id=51">Lua
+Forge</a> page. 
 
-<a name=new></a>
+<p><a name="new"></a></p>
+
 <h2>What's new</h2>
 
 <ul>
-  <li>[12/nov/2004] Version 1.1.0
-  <li>[02/jul/2004] Version <a href="1.0.0">1.0.0</a>
+<li>[12/nov/2004] Version 1.1.0</li>
+
+<li>[02/jul/2004] Version <a href="1.0.0">1.0.0</a></li>
 </ul>
 
-<a name="installation"></a>
+<a name="installation"></a> 
+
 <h2>Installation</h2>
 
-<p>
-LuaLogging is a group of lua scripts compliant with <a href="http://www.keplerproject.org/compat">Compat-5.1</a>.
-You must <code>require"compat-5.1"</code> before <code>require</code>'ing 
-LuaLogging basic package or appenders (sub-modules).
-</p>
+<p>LuaLogging is a group of lua scripts compliant with <a href=
+"http://www.keplerproject.org/compat">Compat-5.1</a>. You must
+<code>require"compat-5.1"</code> before <code>require</code>'ing
+LuaLogging basic package or appenders (sub-modules).</p>
 
+<a name="hist"></a> 
 
-<a name=hist></a>
 <h2>History</h2>
 
-<p>
-LuaLogging 1.1.0 was designed by Danilo Tuler and Thiago Ponte and implemented by Thiago Ponte.
-</p>
-<p>
-LuaLogging <a href="1.0.0">1.0.0</a> was designed by Danilo Tuler (and log4j) and implemented by Danilo Tuler and Andr&eacute; Carregal.
-</p>
+<p>LuaLogging 1.1.0 was designed by Danilo Tuler and Thiago Ponte
+and implemented by Thiago Ponte.</p>
 
+<p>LuaLogging <a href="1.0.0">1.0.0</a> was designed by Danilo
+Tuler (and log4j) and implemented by Danilo Tuler and Andr&eacute;
+Carregal.</p>
 
-<a name="contact"></a>
+<a name="contact"></a> 
+
 <h2>Contact</h2>
 
-<p>
-For more information please
-<a href="mailto:tuler-NO-SPAM-THANKS@ideais.com.br">contact</a>
-us.
-Comments are welcome!
-</p>
+<p>For more information please <a href=
+"mailto:tuler-NO-SPAM-THANKS@ideais.com.br">contact</a> us.
+Comments are welcome!</p>
 
 <hr>
-<small>
-$Id: index.html,v 1.1 2004-11-16 16:33:10 tuler Exp $
-</small>
-
+<small>$Id: index.html,v 1.1 2004/11/16 16:33:10 tuler Exp
+$</small>
 </body>
-</html> 
+</html>
+

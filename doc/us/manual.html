@@ -1,149 +1,158 @@
-<! See Copyright Notice in license.html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
-
 <head>
-<title>LuaLogging: A simple API to use logging features in Lua</title>
+<meta name="generator" content="HTML Tidy, see www.w3.org">
+<title>LuaLogging: A simple API to use logging features in
+Lua</title>
 <style type="text/css">
 ul { list-style-type: disc };
 </style>
 </head>
-
 <body bgcolor="#FFFFFF">
-
 <center>
-<table border=0 cellspacing=2 cellpadding=2>
-<tr><td align=center><a href="http://www.keplerproject.org/lualogging">
-<img border=0 alt="LuaLogging logo" src="../lualogging-128.png"></a>
-<tr><td align=center><big><b>LuaLogging</b></big>
-<tr><td align=center valign=top>A simple API to use logging features in Lua
+<table border="0" cellspacing="2" cellpadding="2">
+<tr>
+<td align="center"><a href=
+"http://www.keplerproject.org/lualogging"><img border="0" alt=
+"LuaLogging logo" src="../lualogging-128.png"></a> </td>
+</tr>
+
+<tr>
+<td align="center"><big><b>LuaLogging</b></big> </td>
+</tr>
+
+<tr>
+<td align="center" valign="top">A simple API to use logging
+features in Lua</td>
+</tr>
 </table>
 </center>
-<p>
 
-<center><small>
-<a href="../">home</a> &middot;
-<a href="#logger">logger</a> &middot;
-<a href="#examples">example</a> &middot;
-<a href="../console">console</a> &middot;
-<a href="../email">email</a> &middot;
-<a href="../file">file</a> &middot;
-<a href="../socket">socket</a> &middot;
-<a href="../sql">sql</a>
-</small></center>
-<p>
+<center><small><a href="../">home</a> &middot; <a href=
+"#logger">logger</a> &middot; <a href="#examples">example</a>
+&middot; <a href="../console">console</a> &middot; <a href=
+"../email">email</a> &middot; <a href="../file">file</a> &middot;
+<a href="../socket">socket</a> &middot; <a href=
+"../sql">sql</a></small></center>
 
 <hr>
+<a name="introduction"></a> 
 
-<a name="introduction"></a>
 <h2>Introduction</h2>
-<p>
-LuaLogging is a simple API to use logging features in Lua.
-Its design is based on <a href="http://logging.apache.org/log4j/docs/index.html">log4j</a>.
-</p>
-<p>
-LuaLogging defines one single global variable, a table called
-<tt>logging</tt>
-which holds a function to create new <a href="#logger"><code>logger</code></a> objects.<br>
-This logger constructor receives a function that will be called on each call to log a message.
-This function is called an <i>appender</i> function.<br>
-An <i>appender</i> function receives three arguments:
+
+<p>LuaLogging is a simple API to use logging features in Lua. Its
+design is based on <a href=
+"http://logging.apache.org/log4j/docs/index.html">log4j</a>.</p>
+
+<p>LuaLogging defines one single global variable, a table called
+<tt>logging</tt> which holds a function to create new <a href=
+"#logger"><code>logger</code></a> objects.<br>
+This logger constructor receives a function that will be called on
+each call to log a message. This function is called an
+<i>appender</i> function.<br>
+An <i>appender</i> function receives three arguments:</p>
+
 <ul>
-  <li> <code>self</code>: the logger object
-  <li> <code>level</code>: the logging <a href="#level">level</a>
-  <li> <code>message</code>: the message to be logged
+<li><code>self</code>: the logger object</li>
+
+<li><code>level</code>: the logging <a href="#level">level</a></li>
+
+<li><code>message</code>: the message to be logged</li>
 </ul>
 
-<p>
-The example below creates a logger that prints the level and message to 
-the standard output (or whatever the print function do).
-</p>
+<p>The example below creates a logger that prints the level and
+message to the standard output (or whatever the print function
+do).</p>
 
 <pre>
-<code>
-local logger = logging.new(function(self, level, message)
+<code>local logger = logging.new(function(self, level, message)
                         print(level, message)
                         return true
                      end)
 </code>
 </pre>
 
-<p>
-LuaLogging provides some extensions that implement several <a href="#appenders">appenders</a>.
-</p>
+<p>LuaLogging provides some extensions that implement several <a
+href="#appenders">appenders</a>.</p>
 
-<a name="logger"></a>
+<a name="logger"></a> 
+
 <h2>Logger objects</h2>
 
-<p>
-A logger object offers a few methods that writes log messages.
-<p>
+<p>A logger object offers a few methods that writes log
+messages.</p>
 
 <h4>Methods</h4>
 
 <ul>
-<a name="logger_log"></a>
-<li> <b><tt>logger:log (level, message)</tt></b> <br>
+<li style="list-style: none"><a name="logger_log"></a></li>
+
+<li><b><tt>logger:log (level, message)</tt></b><br>
 Logs a message with the specified level.<br>
-The parameter <code><b>message</b></code> may be any lua value, not just strings. The same applies to all the functions below.
+The parameter <code><b>message</b></code> may be any lua value, not
+just strings. The same applies to all the functions below. <a name=
+"logger_debug"></a></li>
 
-<a name="logger_debug"></a>
-<li> <b><tt>logger:debug (message)</tt></b> <br>
-Logs a message with DEBUG level.
+<li><b><tt>logger:debug (message)</tt></b><br>
+Logs a message with DEBUG level. <a name="logger_info"></a></li>
 
-<a name="logger_info"></a>
-<li> <b><tt>logger:info (message)</tt></b> <br>
-Logs a message with INFO level.
+<li><b><tt>logger:info (message)</tt></b><br>
+Logs a message with INFO level. <a name="logger_warn"></a></li>
 
-<a name="logger_warn"></a>
-<li> <b><tt>logger:warn (message)</tt></b> <br>
-Logs a message with WARN level.
+<li><b><tt>logger:warn (message)</tt></b><br>
+Logs a message with WARN level. <a name="logger_error"></a></li>
 
-<a name="logger_error"></a>
-<li> <b><tt>logger:error (message)</tt></b> <br>
-Logs a message with ERROR level.
+<li><b><tt>logger:error (message)</tt></b><br>
+Logs a message with ERROR level. <a name="logger_fatal"></a></li>
 
-<a name="logger_fatal"></a>
-<li> <b><tt>logger:fatal (message)</tt></b> <br>
-Logs a message with FATAL level.
+<li><b><tt>logger:fatal (message)</tt></b><br>
+Logs a message with FATAL level. <a name=
+"logger_setlevel"></a></li>
 
-<a name="logger_setlevel"></a>
-<li> <b><tt>logger:setLevel (level)</tt></b> <br>
-The parameter <code>level</code> is one of the variables enumerated <a href="#level">here</a>.
-This method sets a minimum level for messages to be logged.<br>
-If the user sets the minimum level as WARN, DEBUG and INFO log messages are not logged.
-
+<li><b><tt>logger:setLevel (level)</tt></b><br>
+The parameter <code>level</code> is one of the variables enumerated
+<a href="#level">here</a>. This method sets a minimum level for
+messages to be logged.<br>
+If the user sets the minimum level as WARN, DEBUG and INFO log
+messages are not logged.</li>
 </ul>
 
-<a name="level"></a>
+<a name="level"></a> 
+
 <h4>Levels</h4>
+
 <ul>
-<a name="level_debug"></a>
-<li> <b><tt>logging.DEBUG</tt></b> <br>
-The DEBUG level designates fine-grained informational events that are most useful to debug an application.
+<li style="list-style: none"><a name="level_debug"></a></li>
 
-<a name="level_info"></a>
-<li> <b><tt>logging.INFO</tt></b> <br>
-The INFO level designates informational messages that highlight the progress of the application at coarse-grained level.
+<li><b><tt>logging.DEBUG</tt></b><br>
+The DEBUG level designates fine-grained informational events that
+are most useful to debug an application. <a name=
+"level_info"></a></li>
 
-<a name="level_warn"></a>
-<li> <b><tt>logging.WARN</tt></b> <br>
-The WARN level designates potentially harmful situations.
+<li><b><tt>logging.INFO</tt></b><br>
+The INFO level designates informational messages that highlight the
+progress of the application at coarse-grained level. <a name=
+"level_warn"></a></li>
 
-<a name="level_error"></a>
-<li> <b><tt>logging.ERROR</tt></b> <br>
-The ERROR level designates error events that might still allow the application to continue running.
+<li><b><tt>logging.WARN</tt></b><br>
+The WARN level designates potentially harmful situations. <a name=
+"level_error"></a></li>
 
-<a name="level_fatal"></a>
-<li> <b><tt>logging.FATAL</tt></b> <br>
-The FATAL level designates very severe error events that will presumably lead the application to abort.
+<li><b><tt>logging.ERROR</tt></b><br>
+The ERROR level designates error events that might still allow the
+application to continue running. <a name="level_fatal"></a></li>
+
+<li><b><tt>logging.FATAL</tt></b><br>
+The FATAL level designates very severe error events that will
+presumably lead the application to abort.</li>
 </ul>
 
+<a name="examples"></a> 
 
-
-<a name="examples"></a>
 <h2>Example</h2>
 
-Below is a small sample code displaying the basic use of the library.
+Below is a small sample code displaying the basic use of the
+library. 
 
 <blockquote>
 <pre>
@@ -164,8 +173,11 @@ logger:error("server unreachable")
 </pre>
 </blockquote>
 
-Upon execution the following lines will show in the standart output.<br>
-Notice that the INFO log requests are not handled because the minimum level is set to WARN.
+Upon execution the following lines will show in the standart
+output.<br>
+Notice that the INFO log requests are not handled because the
+minimum level is set to WARN. 
+
 <blockquote>
 <pre>
 06/17/04 16:21:15 WARN server did not responded yet
@@ -173,35 +185,38 @@ Notice that the INFO log requests are not handled because the minimum level is s
 </pre>
 </blockquote>
 
-<a name="appenders"></a>
+<a name="appenders"></a> 
+
 <h2>Appenders</h2>
 
-The following appenders are included in the standard distribution.
+The following appenders are included in the standard distribution. 
+
 <ul>
-  <li> <a href="console">Console</a>
-  <li> <a href="file">File</a>
-  <li> <a href="sql">SQL</a>
-  <li> <a href="socket">Socket</a>
-  <li> <a href="email">Email</a>
+<li><a href="console">Console</a></li>
+
+<li><a href="file">File</a></li>
+
+<li><a href="sql">SQL</a></li>
+
+<li><a href="socket">Socket</a></li>
+
+<li><a href="email">Email</a></li>
 </ul>
 
 <h2>Upgrading from 1.0.0</h2>
 
-<p>
-Upgrading from LuaLogging 1.0.0 is very easy. The <code>logger</code> object is fully
-compatible. You just need to change the code that creates the object.
-</p>
+<p>Upgrading from LuaLogging 1.0.0 is very easy. The
+<code>logger</code> object is fully compatible. You just need to
+change the code that creates the object.</p>
 
-<p>
-The <code>logger</code> constructor from 1.0.0 received a single argument which was a
-filename. To upgrade to 1.1.0 you should create a <code>logging.file</code> object instead, 
-passing the filename as argument. As simple as this.
-</p>
+<p>The <code>logger</code> constructor from 1.0.0 received a single
+argument which was a filename. To upgrade to 1.1.0 you should
+create a <code>logging.file</code> object instead, passing the
+filename as argument. As simple as this.</p>
 
 <hr>
-<small>
-$Id: manual.html,v 1.1 2004-11-16 16:33:10 tuler Exp $
-</small>
-
+<small>$Id: index.html,v 1.1 2004/11/16 16:33:10 tuler Exp
+$</small>
 </body>
-</html> 
+</html>
+

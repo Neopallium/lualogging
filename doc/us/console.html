@@ -1,61 +1,61 @@
-<! See Copyright Notice in license.html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2//EN">
 <html>
-
 <head>
-<title>LuaLogging: A simple API to use logging features in Lua</title>
+<meta name="generator" content="HTML Tidy, see www.w3.org">
+<title>LuaLogging: A simple API to use logging features in
+Lua</title>
 <style type="text/css">
 ul { list-style-type: disc };
 </style>
 </head>
-
 <body bgcolor="#FFFFFF">
-
 <center>
-<table border=0 cellspacing=2 cellpadding=2>
-<tr><td align=center><a href="http://www.keplerproject.org/lualogging">
-<img border=0 alt="LuaLogging logo" src="../lualogging-128.png"></a>
-<tr><td align=center><big><b>LuaLogging</b></big>
-<tr><td align=center valign=top>A simple API to use logging features in Lua
+<table border="0" cellspacing="2" cellpadding="2">
+<tr>
+<td align="center"><a href=
+"http://www.keplerproject.org/lualogging"><img border="0" alt=
+"LuaLogging logo" src="../lualogging-128.png"></a> </td>
+</tr>
+
+<tr>
+<td align="center"><big><b>LuaLogging</b></big> </td>
+</tr>
+
+<tr>
+<td align="center" valign="top">A simple API to use logging
+features in Lua</td>
+</tr>
 </table>
 </center>
-<p>
 
-<center><small>
-<a href="..">home</a> &middot;
-<a href="../manual">manual</a> &middot;
-<a href="#example">example</a> &middot;
-console &middot;
-<a href="../email">email</a> &middot;
-<a href="../file">file</a> &middot;
-<a href="../socket">socket</a> &middot;
-<a href="../sql">sql</a>
-</small></center>
-<p>
+<center><small><a href="..">home</a> &middot; <a href=
+"../manual">manual</a> &middot; <a href="#example">example</a>
+&middot; console &middot; <a href="../email">email</a> &middot; <a
+href="../file">file</a> &middot; <a href="../socket">socket</a>
+&middot; <a href="../sql">sql</a></small></center>
 
 <hr>
-
 <h2>Console appender</h2>
 
-Console is the simplest appender. It just writes the log messages to <code>io.stdout</code>.
+Console is the simplest appender. It just writes the log messages
+to <code>io.stdout</code>. 
 
-<p>
-<code>
-function logging.console([logPattern])
-</code>
-</p>
+<p><code>function logging.console([logPattern])</code></p>
 
 <ul>
-  <li><code>logPattern</code>:<br>
-  A pattern can be specified to control how the message is written.<br>
-  The default value is <code>"%date %level %message\n"</code>.<br>
+<li><code>logPattern</code>:<br>
+ A pattern can be specified to control how the message is
+written.<br>
+ The default value is <code>"%date %level %message\n"</code>.<br>
+</li>
 </ul>
 
-<a name="example"></a>
+<a name="example"></a> 
+
 <h3>Example</h3>
 
 <pre>
-<code>
-require"logging.console"
+<code>require"logging.console"
 
 local logger = logging.console()
 
@@ -66,9 +66,8 @@ logger:error("error!")
 </pre>
 
 <hr>
-<small>
-$Id: console.html,v 1.1 2004-11-16 16:33:10 tuler Exp $
-</small>
-
+<small>$Id: index.html,v 1.1 2004/11/16 16:33:10 tuler Exp
+$</small>
 </body>
-</html> 
+</html>
+
