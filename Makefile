@@ -4,8 +4,8 @@ PKG= lualogging-$(VERSION)
 DIST_DIR= $(PKG)
 TAR_FILE= $(PKG).tar.gz
 ZIP_FILE= $(PKG).zip
-LUAS= console.lua email.lua file.lua logging.lua socket.lua sql.lua
-SRCS= $(LUAS) README Makefile
+LUAS= src/console.lua src/email.lua src/file.lua src/logging.lua src/socket.lua src/sql.lua
+SRCS= $(LUAS)
 
 
 dist: dist_dir
@@ -15,7 +15,8 @@ dist: dist_dir
 
 dist_dir:
 	mkdir $(DIST_DIR)
-	cp $(SRCS) $(DIST_DIR)
+	cp README Makefile $(DIST_DIR)
+	cp $(SRCS) $(DIST_DIR)/src
 
 install:
 	mkdir -p $(LUA_DIR)/logging
