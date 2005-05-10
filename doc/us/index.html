@@ -1,146 +1,122 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html>
 <head>
-<meta name="generator" content="HTML Tidy, see www.w3.org">
-<title>LuaLogging: A simple API to use logging features in
-Lua</title>
-<style type="text/css">
-ul { list-style-type: disc };
-</style>
+	<title>LuaLogging: A simple API to use logging features in Lua</title>
+    <link rel="stylesheet" href="http://www.keplerproject.org/doc.css" type="text/css"/>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 </head>
-<body bgcolor="#FFFFFF">
-<center>
-<table border="0" cellspacing="2" cellpadding="2">
-<tr>
-<td align="center"><a href=
-"http://www.keplerproject.org/lualogging"><img border="0" alt=
-"LuaLogging logo" src="lualogging-128.png"></a> </td>
-</tr>
+<body>
+	
+<div id="container">
 
-<tr>
-<td align="center"><big><b>LuaLogging</b></big> </td>
-</tr>
+<div id="product">
+	<div id="product_logo"><a href="http://www.keplerproject.org">
+		<img alt="LuaLogging logo" src="lualogging-128.png"/>
+	</a></div>
+	<div id="product_name"><big><b>LuaLogging</b></big></div>
+	<div id="product_description">A simple API to use logging features in Lua</div>
+</div> <!-- id="product" -->
 
-<tr>
-<td align="center" valign="top">A simple API to use logging
-features in Lua</td>
-</tr>
-</table>
-</center>
+<div id="main">
+	
+<div id="navigation">
+<h1>LuaLogging</h1>
+	<ul>
+		<li><strong>Home</strong>
+			<ul>
+				<li><a href="index.html#overview">Overview</a></li>
+				<li><a href="index.html#status">Status</a></li>
+				<li><a href="index.html#download">Download</a></li>
+				<li><a href="index.html#history">History</a></li>
+				<li><a href="index.html#credits">Credits</a></li>
+				<li><a href="index.html#contact">Contact us</a></li>
+			</ul>
+		</li>
+		<li><a href="manual/index.html">Manual</a>
+			<ul>
+				<li><a href="manual/index.html#introduction">Introduction</a></li>
+				<li><a href="manual/index.html#installation">Installation</a></li>
+			</ul>
+		</li>
+		<li><strong>Appenders</strong>
+			<ul>
+				<li><a href="console">Console</a></li>
+				<li><a href="file">File</a></li>
+				<li><a href="sql">SQL</a></li>
+				<li><a href="socket">Socket</a></li>
+				<li><a href="email">Email</a></li>
+			</ul>
+		</li>
+		<li><a href="examples.html">Examples</a></li>
+		<li><a href="license.html">License</a></li>
+	</ul>
+</div> <!-- id="navigation" -->
 
-<center><small><a href="#over">overview</a> &middot; <a href=
-"#version">current version</a> &middot; <a href=
-"#download">download</a> &middot; <a href="#new">news</a> &middot;
-<a href="#installation">installation</a> &middot; <a href=
-"manual">manual</a> &middot; <a href="license.html">license</a>
-&middot; <a href="#hist">history</a> &middot; <a href=
-"#contact">contact</a></small></center>
+<div id="content">
+<h2><a name="overview"></a>Overview</h2>
 
-<hr>
-<h2>Contents</h2>
+<p>
+LuaLogging provides a simple API to use logging features in Lua.
+Its design was based on <a href="http://logging.apache.org/log4j/docs/index.html">log4j</a>.
+</p>
 
-<ul>
-<li><a href="#over">Overview</a></li>
-
-<li><a href="#version">Current Version</a></li>
-
-<li><a href="#download">Download</a></li>
-
-<li><a href="#new">What's new</a></li>
-
-<li><a href="#installation">Installation</a></li>
-
-<li><a href="manual">User's manual</a> 
-
-<ul>
-<li><a href="console">Console</a></li>
-
-<li><a href="file">File</a></li>
-
-<li><a href="sql">SQL</a></li>
-
-<li><a href="socket">Socket</a></li>
-
-<li><a href="email">Email</a></li>
-</ul>
-</li>
-
-<li><a href="license.html">Copyright &amp; License</a></li>
-
-<li><a href="#hist">History</a></li>
-
-<li><a href="#contact">Contact</a></li>
-</ul>
-
-<a name="over"></a> 
-
-<h2>Overview</h2>
-
-<p>LuaLogging provides a simple API to use logging features in Lua.
-Its design was based on <a href=
-"http://logging.apache.org/log4j/docs/index.html">log4j</a>.</p>
-
+<p>
 LuaLogging currently supports console, file, email, socket and sql
-outputs. 
+outputs.
+</p>
 
-<p>LuaLogging is free software and uses the same <a href=
-"license.html">license</a> as Lua 5.0. It is part of the <a href=
-"http://www.keplerproject.org">Kepler Project</a>. <a name=
-"version"></a></p>
+<p>
+LuaLogging is free software and uses the same <a href="license.html">license</a> 
+as Lua 5.0. It is part of the <a href="http://www.keplerproject.org">Kepler Project</a>.
+</p>
 
-<h2>Current version</h2>
+<h2><a name="status"></a>Status</h2>
 
 <p>Current version is 1.1.0. It was developed for Lua 5.0.</p>
 
-<a name="download"></a> 
+<h2><a name="download"></a>Download</h2>
 
-<h2>Download</h2>
+<p>
+LuaLogging can be downloaded from the its <a href="http://luaforge.net/project/showfiles.php?group_id=51">Lua
+Forge</a> page.
+</p>
 
-LuaLogging can be downloaded from the its <a href=
-"http://luaforge.net/project/showfiles.php?group_id=51">Lua
-Forge</a> page. 
-
-<p><a name="new"></a></p>
-
-<h2>What's new</h2>
+<h2><a name="history"></a>History</h2>
 
 <ul>
 <li>[12/nov/2004] Version 1.1.0</li>
-
 <li>[02/jul/2004] Version <a href="1.0.0">1.0.0</a></li>
 </ul>
 
-<a name="installation"></a> 
+<h2><a name="history"></a>History</h2>
 
-<h2>Installation</h2>
-
-<p>LuaLogging is a group of lua scripts compliant with <a href=
-"http://www.keplerproject.org/compat">Compat-5.1</a>. You must
-<code>require"compat-5.1"</code> before <code>require</code>'ing
-LuaLogging basic package or appenders (sub-modules).</p>
-
-<a name="hist"></a> 
-
-<h2>History</h2>
-
-<p>LuaLogging 1.1.0 was designed by Danilo Tuler and Thiago Ponte
-and implemented by Thiago Ponte.</p>
+<p>
+LuaLogging 1.1.0 was designed by Danilo Tuler and Thiago Ponte
+and implemented by Thiago Ponte.
+</p>
 
 <p>LuaLogging <a href="1.0.0">1.0.0</a> was designed by Danilo
 Tuler (and log4j) and implemented by Danilo Tuler and Andr&eacute;
 Carregal.</p>
 
-<a name="contact"></a> 
+<h2><a name="contact"></a>Contact</h2>
 
-<h2>Contact</h2>
-
-<p>For more information please <a href=
-"mailto:tuler-NO-SPAM-THANKS@ideais.com.br">contact</a> us.
+<p>For more information please <a href="mailto:tuler-NO-SPAM-THANKS@ideais.com.br">contact</a> us.
 Comments are welcome!</p>
 
-<hr>
-<small>$Id: index.html,v 1.1 2004/11/16 16:33:10 tuler Exp
-$</small>
+</div> <!-- id="content" -->
+
+</div> <!-- id="main" -->
+
+<div id="about">
+	<p><a href="http://validator.w3.org/check?uri=referer"><img src="http://www.w3.org/Icons/valid-xhtml10" alt="Valid XHTML 1.0!" height="31" width="88" /></a></p>
+	<p><small>
+	$Id: index.html,v 1.3 2005-05-10 14:42:42 tuler Exp $
+	</small></p>
+</div> <!-- id="about" -->
+
+</div> <!-- id="container" -->
+
 </body>
 </html>
-
