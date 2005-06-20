@@ -1,5 +1,5 @@
 -------------------------------------------------------------------------------
--- $Id: logging.lua,v 1.2 2004-11-23 10:54:10 tuler Exp $
+-- $Id: logging.lua,v 1.3 2005-06-20 22:18:05 tomas Exp $
 -- includes a new tostring function that handles tables recursively
 --
 -- Authors:
@@ -14,10 +14,9 @@ local Public, Private = {}, {}
 logging = Public
 
 -- Meta information
-Public._COPYRIGHT = "Copyright (C) 2004 Kepler Project"
+Public._COPYRIGHT = "Copyright (C) 2004-2005 Kepler Project"
 Public._DESCRIPTION = "A simple API to use logging features in Lua"
-Public._NAME = "LuaLogging"
-Public._VERSION = "1.1.0"
+Public._VERSION = "LuaLogging 1.1.0"
 
 -- The DEBUG Level designates fine-grained instring.formational events that are most
 -- useful to debug an application
