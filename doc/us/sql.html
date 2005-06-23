@@ -60,7 +60,7 @@
 
 The SQL appender can be used to write log messages to a SQL
 database table. It relies on <a href=
-"http://www.keplerproject.org/luasql">LuaSQL</a>. As such any
+"http://www.keplerproject.org/luasql/">LuaSQL</a>. As such any
 database supported by LuaSQL can be used. 
 
 <pre class="example">
@@ -75,30 +75,30 @@ function logging.sql{
 </pre>
 
 <ul>
-    <li><code>connectionfactory</code>:<br>
+    <li><code>connectionfactory</code>:<br />
     This must be a function that creates a LuaSQL connection object.
     This function will be called everytime a connection needs to be
     created.</li>
     
-    <li><code>tablename</code>:<br>
+    <li><code>tablename</code>:<br />
     The name of the table to write the log requests. Default value is
     <code>"LogTable"</code>.</li>
     
-    <li><code>logdatefield</code>:<br>
+    <li><code>logdatefield</code>:<br />
     The name of the field to write the date of each log request.
     Default value is <code>"LogDate"</code>.</li>
     
-    <li><code>loglevelfield</code>:<br>
+    <li><code>loglevelfield</code>:<br />
     The name of the field to write the level of each log request.
     Default value is <code>"LogLevel"</code>.</li>
     
-    <li><code>logmessagefield</code>:<br>
+    <li><code>logmessagefield</code>:<br />
     The name of the field to write the message of each log request.
     Default value is <code>"LogMessage"</code>.</li>
     
-    <li><code>keepalive</code>:<br>
+    <li><code>keepalive</code>:<br />
     In every log request a connection to the database is opened, the
-    message is written, and the connection is closed.<br>
+    message is written, and the connection is closed.<br />
     If the user wants to keep the connection opened he can specify
     <code>keepalive = true</code>.</li>
 </ul>
@@ -133,7 +133,7 @@ logger:error("error!")
 <div id="about">
 	<p><a href="http://validator.w3.org/check?uri=referer">
     <img src="http://www.w3.org/Icons/valid-xhtml10" alt="Valid XHTML 1.0!" height="31" width="88" /></a></p>
-	<p><small>$Id: sql.html,v 1.6 2005-06-23 18:19:39 carregal Exp $</small></p>
+	<p><small>$Id: sql.html,v 1.7 2005-06-23 18:30:07 carregal Exp $</small></p>
 </div> <!-- id="about" -->
 
 </div> <!-- id="container" -->
