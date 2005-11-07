@@ -1,5 +1,5 @@
 -------------------------------------------------------------------------------
--- $Id: logging.lua,v 1.3 2005-06-20 22:18:05 tomas Exp $
+-- $Id: logging.lua,v 1.4 2005-11-07 16:07:09 tuler Exp $
 -- includes a new tostring function that handles tables recursively
 --
 -- Authors:
@@ -90,6 +90,7 @@ end
 function Public.prepareLogMsg(pattern, dt, level, message)
 
     local logMsg = pattern or "%date %level %message\n"
+    message = string.gsub(message, "%%", "%%%%")
     logMsg = string.gsub(logMsg, "%%date", dt)
     logMsg = string.gsub(logMsg, "%%level", level)
     logMsg = string.gsub(logMsg, "%%message", message)
