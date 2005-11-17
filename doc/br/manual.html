@@ -14,7 +14,7 @@
 	<div id="product_logo"><a href="http://www.keplerproject.org">
     <img alt="Logotipo do LuaLogging" src="lualogging-128.png"/></a></div>
 	<div id="product_name"><big><strong>LuaLogging</strong></big></div>
-	<div id="product_description">Uma API simples para usar os recursos de log em Lua</div>
+	<div id="product_description">Uma API simples para usar recursos de log em Lua</div>
 </div> <!-- id="product" -->
 
 <div id="main">
@@ -57,17 +57,17 @@
 
 <h2><a name="introduction"></a>Introdu&ccedil;&atilde;o</h2>
 
-<p>O LuaLogging fornece uma API simples para usar os recursos de log em Lua.
+<p>LuaLogging fornece uma API simples para usar recursos de log em Lua.
 O design se baseia em <a href="http://logging.apache.org/log4j/docs/index.html">log4j</a>.
-No momento, o LuaLogging oferece suporte a resultados em consoles, arquivos, emails,
+No momento, LuaLogging oferece suporte a resultados em consoles, arquivos, emails,
 soquetes e sql com o uso de <em><a href="#appenders">appenders</a></em>.</p>
 
-<p>O LuaLogging define uma &uacute;nica vari&aacute;vel global, uma tabela chamada <code>logging</code>,
-que cont&eacute;m uma fun&ccedil;&atilde;o para criar novos objetos <a href="#logger"><code>logger</code></a>.</p>
+<p>LuaLogging define uma &uacute;nica vari&aacute;vel global, uma tabela chamada <code>logging</code>,
+que cont&eacute;m uma fun&ccedil;&atilde;o para criar novos <a href="#logger"><code>logger</code>s</a>.</p>
 
-<p>Este construtor logger aceita uma fun&ccedil;&atilde;o
-(conhecida como a fun&ccedil;&atilde;o <em>appender</em>) que ser&aacute; chamada
-sempre que houver um pedido de log de mensagem.</p>
+<p>Este construtor de <code>logger</code>s recebe uma fun&ccedil;&atilde;o
+(chamada <em>appender</em>) que ser&aacute; chamada
+sempre que houver uma mensagem de log for escrita.</p>
 
 <p>Uma fun&ccedil;&atilde;o <em>appender</em> aceita tr&ecirc;s argumentos:</p>
 
@@ -79,15 +79,15 @@ sempre que houver um pedido de log de mensagem.</p>
 
 <h2><a name="installation"></a>Instala&ccedil;&atilde;o</h2>
 
-<p>O LuaLogging &eacute; distribu&iacute;do como um conjunto de arquivos Lua e segue o
-<a href="http://www.keplerproject.org/compat/">modelo de pacotes</a> da Lua 5.1, portanto,
+<p>LuaLogging &eacute; distribu&iacute;do como um conjunto de arquivos Lua e segue o
+<a href="http://www.keplerproject.org/compat/">modelo de pacotes</a> de Lua 5.1, portanto,
 ele deve ser &quot;instalado&quot;. Consulte a se&ccedil;&atilde;o
 <a href="http://www.keplerproject.org/compat/manual.html#configuration">Configura&ccedil;&atilde;o do Compat-5.1</a>
 para obter informa&ccedil;&otilde;es sobre como instalar corretamente os m&oacute;dulos.</p>
 
 <h2><a name="logger"></a>Objetos logger</h2>
 
-<p>Um objeto logger oferece os m&eacute;todos a seguir, que gravam mensagens de log.</p>
+<p>Um objeto logger oferece os m&eacute;todos a seguir, que escrevem mensagens de log.</p>
 
 <p>Para cada um dos m&eacute;todos a seguir, o par&acirc;metro <code>message</code>
 pode ser qualquer valor Lua e n&atilde;o apenas strings. Quando necess&aacute;rio,
@@ -112,7 +112,7 @@ portanto, as mensagens dos n&iacute;veis <code>logging.INFO</code> e
     <dd>O n&iacute;vel <em>WARN</em> designa situa&ccedil;&otilde;es potencialmente danosas.</dd>
     
     <dt><strong>logging.ERROR</strong></dt>
-    <dd>O n&iacute;vel <em>ERROR</em> designa eventos de erro que podem permitir que o aplicativo
+    <dd>O n&iacute;vel <em>ERROR</em> designa eventos de erro que podem ainda permitir que a aplica&ccedil;&atilde;o
     continue a ser executado.</dd>
     
     <dt><strong>logging.FATAL</strong></dt>
@@ -170,8 +170,8 @@ logger:error(&quot;o servidor n&atilde;o pode ser alcan&ccedil;ado&quot;)
 
 <p>Ap&oacute;s executar o exemplo anterior, as linhas a seguir ser&atilde;o
 mostradas na sa&iacute;da padr&atilde;o. Observe que as solicita&ccedil;&otilde;es
-de log <em>INFO</em> n&atilde;o s&atilde;o tratadas porque o n&iacute;vel m&iacute;nimo
-est&aacute; definido como <em>WARN</em>.</p>
+de log do n&iacute;vel <em>INFO</em> n&atilde;o s&atilde;o tratadas porque o 
+n&iacute;vel m&iacute;nimo est&aacute; definido como <em>WARN</em>.</p>
 
 <pre class="example">
 WARN o servidor ainda n&atilde;o respondeu
@@ -210,7 +210,7 @@ como argumento. Isso &eacute; tudo.</p>
 <div id="about">
 	<p><a href="http://validator.w3.org/check?uri=referer">
     <img src="http://www.w3.org/Icons/valid-xhtml10" alt="XHTML 1.0 v&aacute;lido!" height="31" width="88" /></a></p>
-	<p><small>$Id: manual.html,v 1.1 2005-11-16 21:04:05 carregal Exp $</small></p>
+	<p><small>$Id: manual.html,v 1.2 2005-11-17 21:27:18 tuler Exp $</small></p>
 </div> <!-- id="about" -->
 
 </div> <!-- id="container" -->
