@@ -1,12 +1,12 @@
 -------------------------------------------------------------------------------
--- $Id: sql.lua,v 1.1 2004-11-16 16:33:10 tuler Exp $
+-- $Id: sql.lua,v 1.2 2006-02-20 18:07:49 tuler Exp $
 --
 -- Saves the logging information in a table using luasql
 --
 -- Authors:
 --   Thiago Costa Ponte (thiago@ideais.com.br)
 --
--- Copyright (c) 2004 Kepler Project
+-- Copyright (c) 2004-2006 Kepler Project
 -------------------------------------------------------------------------------
 
 require"logging"

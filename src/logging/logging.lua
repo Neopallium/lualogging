@@ -1,5 +1,5 @@
 -------------------------------------------------------------------------------
--- $Id: logging.lua,v 1.4 2005-11-07 16:07:09 tuler Exp $
+-- $Id: logging.lua,v 1.5 2006-02-20 18:07:49 tuler Exp $
 -- includes a new tostring function that handles tables recursively
 --
 -- Authors:
@@ -7,79 +7,78 @@
 --   André Carregal (carregal@keplerproject.org)
 --   Thiago Costa Ponte (thiago@ideais.com.br)
 --
--- Copyright (c) 2004 Kepler Project
+-- Copyright (c) 2004-2006 Kepler Project
 -------------------------------------------------------------------------------
 
-local Public, Private = {}, {}
-logging = Public
+module("logging")
 
 -- Meta information
-Public._COPYRIGHT = "Copyright (C) 2004-2005 Kepler Project"
-Public._DESCRIPTION = "A simple API to use logging features in Lua"
-Public._VERSION = "LuaLogging 1.1.0"
+_COPYRIGHT = "Copyright (C) 2004-2005 Kepler Project"
+_DESCRIPTION = "A simple API to use logging features in Lua"
+_VERSION = "LuaLogging 1.1.0"
 
 -- The DEBUG Level designates fine-grained instring.formational events that are most
 -- useful to debug an application
-Public.DEBUG = "DEBUG"
+DEBUG = "DEBUG"
 
 -- The INFO level designates instring.formational messages that highlight the
 -- progress of the application at coarse-grained level
-Public.INFO = "INFO"
+INFO = "INFO"
 
 -- The WARN level designates potentially harmful situations
-Public.WARN = "WARN"
+WARN = "WARN"
 
 -- The ERROR level designates error events that might still allow the
 -- application to continue running
-Public.ERROR = "ERROR"
+ERROR = "ERROR"
 
 -- The FATAL level designates very severe error events that will presumably
 -- lead the application to abort
-Public.FATAL = "FATAL"
+FATAL = "FATAL"
 
-Private.LEVEL = {
-	[Public.DEBUG] = 1,
-	[Public.INFO]  = 2,
-	[Public.WARN]  = 3,
-	[Public.ERROR] = 4,
-	[Public.FATAL] = 5,
+local LEVEL = {
+	[DEBUG] = 1,
+	[INFO]  = 2,
+	[WARN]  = 3,
+	[ERROR] = 4,
+	[FATAL] = 5,
 }
 
 
 -------------------------------------------------------------------------------
 -- Creates a new logger object
 -------------------------------------------------------------------------------
-function Public.new(append)
+function new(append)
 
         if type(append) ~= "function" then
             return nil, "Appender must be a function."
         end
 
 	local logger = {}
-	logger.level = Public.DEBUG
+	logger.level = DEBUG
         logger.append = append
 
 	logger.setLevel = function (self, level)
-		assert(Private.LEVEL[level], string.format("undefined level `%s'", tostring(level)))
+		assert(LEVEL[level], string.format("undefined level `%s'", tostring(level)))
 		self.level = level
 	end
 
 	logger.log = function (self, level, message)
-		assert(Private.LEVEL[level], string.format("undefined level `%s'", tostring(level)))
-		if Private.LEVEL[level] < Private.LEVEL[self.level] then
+		assert(LEVEL[level], string.format("undefined level `%s'", tostring(level)))
+		if LEVEL[level] < LEVEL[self.level] then
 			return
 		end
 		if type(message) ~= "string" then
-		  message = Public.tostring(message)
+		  message = tostring(message)
 		end
 		return logger:append(level, message)
 	end
 
-	logger.debug = function (logger, message) return logger:log(Public.DEBUG, message) end
-	logger.info  = function (logger, message) return logger:log(Public.INFO,  message) end
-	logger.warn  = function (logger, message) return logger:log(Public.WARN,  message) end
-	logger.error = function (logger, message) return logger:log(Public.ERROR, message) end
-	logger.fatal = function (logger, message) return logger:log(Public.FATAL, message) end
+	logger.debug = function (logger, message) return logger:log(DEBUG, message) end
+	logger.info  = function (logger, message) return logger:log(INFO,  message) end
+	logger.warn  = function (logger, message) return logger:log(WARN,  message) end
+	logger.error = function (logger, message) return logger:log(ERROR, message) end
+	logger.fatal = function (logger, message) return logger:log(FATAL, message) end
 	return logger
 end
 
@@ -87,7 +86,7 @@ end
 -------------------------------------------------------------------------------
 -- Prepares the log message
 -------------------------------------------------------------------------------
-function Public.prepareLogMsg(pattern, dt, level, message)
+function prepareLogMsg(pattern, dt, level, message)
 
     local logMsg = pattern or "%date %level %message\n"
     message = string.gsub(message, "%%", "%%%%")
@@ -103,7 +102,7 @@ end
 --
 -- Converts Table fields in alphabetical order
 -------------------------------------------------------------------------------
-function Public.tostring(value)
+function tostring(value)
   local str = ''
 
   if (type(value) ~= 'table') then
@@ -128,9 +127,9 @@ function Public.tostring(value)
     local entry = ""
     table.foreachi (auxTable, function (i, fieldName)
       if ((tonumber(fieldName)) and (tonumber(fieldName) > 0)) then
-        entry = Public.tostring(value[tonumber(fieldName)])
+        entry = tostring(value[tonumber(fieldName)])
       else
-        entry = fieldName.." = "..Public.tostring(value[fieldName])
+        entry = fieldName.." = "..tostring(value[fieldName])
       end
       str = str..separator..entry
       separator = ", "
