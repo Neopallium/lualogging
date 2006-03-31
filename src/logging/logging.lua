@@ -1,5 +1,5 @@
 -------------------------------------------------------------------------------
--- $Id: logging.lua,v 1.5 2006-02-20 18:07:49 tuler Exp $
+-- $Id: logging.lua,v 1.6 2006-03-31 06:06:47 tuler Exp $
 -- includes a new tostring function that handles tables recursively
 --
 -- Authors:
@@ -9,6 +9,8 @@
 --
 -- Copyright (c) 2004-2006 Kepler Project
 -------------------------------------------------------------------------------
+
+local type, table, string, assert, tostring = type, table, string, assert, tostring
 
 module("logging")
 
@@ -50,9 +52,9 @@ local LEVEL = {
 -------------------------------------------------------------------------------
 function new(append)
 
-        if type(append) ~= "function" then
-            return nil, "Appender must be a function."
-        end
+	if type(append) ~= "function" then
+		return nil, "Appender must be a function."
+	end
 
 	local logger = {}
 	logger.level = DEBUG
