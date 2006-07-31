@@ -1,5 +1,5 @@
 -------------------------------------------------------------------------------
--- $Id: logging.lua,v 1.6 2006-03-31 06:06:47 tuler Exp $
+-- $Id: logging.lua,v 1.7 2006-07-31 15:06:22 mascarenhas Exp $
 -- includes a new tostring function that handles tables recursively
 --
 -- Authors:
@@ -10,7 +10,7 @@
 -- Copyright (c) 2004-2006 Kepler Project
 -------------------------------------------------------------------------------
 
-local type, table, string, assert, tostring = type, table, string, assert, tostring
+local type, table, string, assert, _tostring = type, table, string, assert, tostring
 
 module("logging")
 
@@ -111,7 +111,7 @@ function tostring(value)
     if (type(value) == 'string') then
       str = string.format("%q", value)
     else
-      str = tostring(value)
+      str = _tostring(value)
     end
   else
     local auxTable = {}
