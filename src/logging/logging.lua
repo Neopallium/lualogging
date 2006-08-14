@@ -1,5 +1,5 @@
 -------------------------------------------------------------------------------
--- $Id: logging.lua,v 1.7 2006-07-31 15:06:22 mascarenhas Exp $
+-- $Id: logging.lua,v 1.8 2006-08-14 18:11:59 carregal Exp $
 -- includes a new tostring function that handles tables recursively
 --
 -- Authors:
@@ -15,9 +15,9 @@ local type, table, string, assert, _tostring = type, table, string, assert, tost
 module("logging")
 
 -- Meta information
-_COPYRIGHT = "Copyright (C) 2004-2005 Kepler Project"
+_COPYRIGHT = "Copyright (C) 2004-2006 Kepler Project"
 _DESCRIPTION = "A simple API to use logging features in Lua"
-_VERSION = "LuaLogging 1.1.0"
+_VERSION = "LuaLogging 1.1.2"
 
 -- The DEBUG Level designates fine-grained instring.formational events that are most
 -- useful to debug an application
