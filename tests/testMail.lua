@@ -11,3 +11,5 @@ local logger = logging.email {
 logger:info("logging.sql test")
 logger:debug("debugging...")
 logger:error("error!")
+
+print("Mail Logging OK")

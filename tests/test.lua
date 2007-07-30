@@ -7,6 +7,8 @@ local test = {
 	"testSQL.lua",
 }
 
+print ("Start of Logging tests")
 table.foreachi (test, function (i, filename)
 	dofile(filename)
 end)
+print ("End of Logging tests")
