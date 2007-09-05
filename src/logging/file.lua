@@ -1,12 +1,11 @@
 -------------------------------------------------------------------------------
--- $Id: file.lua,v 1.4 2007-08-20 15:09:34 carregal Exp $
---
 -- Saves logging information in a file
 --
--- Authors:
---   Thiago Costa Ponte (thiago@ideais.com.br)
+-- @author Thiago Costa Ponte (thiago@ideais.com.br)
 --
--- Copyright (c) 2004-2007 Kepler Project
+-- @copyright 2004-2007 Kepler Project
+--
+-- @release $Id: file.lua,v 1.5 2007-09-05 12:15:31 tomas Exp $
 -------------------------------------------------------------------------------
 
 require"logging"

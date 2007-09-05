@@ -1,12 +1,11 @@
 -------------------------------------------------------------------------------
--- $Id: email.lua,v 1.3 2007-08-08 20:35:38 carregal Exp $
---
 -- Emails logging information to the given recipient
 --
--- Authors:
---   Thiago Costa Ponte (thiago@ideais.com.br)
+-- @author Thiago Costa Ponte (thiago@ideais.com.br)
 --
--- Copyright (c) 2004-2007 Kepler Project
+-- @copyright 2004-2007 Kepler Project
+--
+-- @release $Id: email.lua,v 1.4 2007-09-05 12:15:31 tomas Exp $
 -------------------------------------------------------------------------------
 
 require"logging"

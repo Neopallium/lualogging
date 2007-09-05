@@ -1,13 +1,12 @@
 -------------------------------------------------------------------------------
--- $Id: logging.lua,v 1.9 2007-08-08 20:35:38 carregal Exp $
 -- includes a new tostring function that handles tables recursively
 --
--- Authors:
---   Danilo Tuler (tuler@ideais.com.br)
---   André Carregal (carregal@keplerproject.org)
---   Thiago Costa Ponte (thiago@ideais.com.br)
+-- @author Danilo Tuler (tuler@ideais.com.br)
+-- @author André Carregal (carregal@keplerproject.org)
+-- @author Thiago Costa Ponte (thiago@ideais.com.br)
 --
--- Copyright (c) 2004-2007 Kepler Project
+-- @copyright 2004-2007 Kepler Project
+-- @release $Id: logging.lua,v 1.10 2007-09-05 12:15:31 tomas Exp $
 -------------------------------------------------------------------------------
 
 local type, table, string, assert, _tostring = type, table, string, assert, tostring
@@ -49,6 +48,9 @@ local LEVEL = {
 
 -------------------------------------------------------------------------------
 -- Creates a new logger object
+-- @param append Function used by the logger to append a message with a
+--	log-level to the log stream.
+-- @return Table representing the new logger object.
 -------------------------------------------------------------------------------
 function new(append)
 
@@ -58,7 +60,7 @@ function new(append)
 
 	local logger = {}
 	logger.level = DEBUG
-        logger.append = append
+	logger.append = append
 
 	logger.setLevel = function (self, level)
 		assert(LEVEL[level], string.format("undefined level `%s'", tostring(level)))
