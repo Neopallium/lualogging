@@ -2,11 +2,11 @@
 -- includes a new tostring function that handles tables recursively
 --
 -- @author Danilo Tuler (tuler@ideais.com.br)
--- @author André Carregal (carregal@keplerproject.org)
+-- @author Andre Carregal (info@keplerproject.org)
 -- @author Thiago Costa Ponte (thiago@ideais.com.br)
 --
 -- @copyright 2004-2007 Kepler Project
--- @release $Id: logging.lua,v 1.10 2007-09-05 12:15:31 tomas Exp $
+-- @release $Id: logging.lua,v 1.11 2007-09-07 23:07:00 carregal Exp $
 -------------------------------------------------------------------------------
 
 local type, table, string, assert, _tostring = type, table, string, assert, tostring
