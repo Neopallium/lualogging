@@ -6,7 +6,7 @@
 -- @author Thiago Costa Ponte (thiago@ideais.com.br)
 --
 -- @copyright 2004-2007 Kepler Project
--- @release $Id: logging.lua,v 1.11 2007-09-07 23:07:00 carregal Exp $
+-- @release $Id: logging.lua,v 1.12 2007-10-30 19:57:59 carregal Exp $
 -------------------------------------------------------------------------------
 
 local type, table, string, assert, _tostring = type, table, string, assert, tostring
@@ -16,7 +16,7 @@ module("logging")
 -- Meta information
 _COPYRIGHT = "Copyright (C) 2004-2007 Kepler Project"
 _DESCRIPTION = "A simple API to use logging features in Lua"
-_VERSION = "LuaLogging 1.1.3"
+_VERSION = "LuaLogging 1.1.4"
 
 -- The DEBUG Level designates fine-grained instring.formational events that are most
 -- useful to debug an application
