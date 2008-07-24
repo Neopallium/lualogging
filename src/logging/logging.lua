@@ -6,10 +6,10 @@
 -- @author Thiago Costa Ponte (thiago@ideais.com.br)
 --
 -- @copyright 2004-2007 Kepler Project
--- @release $Id: logging.lua,v 1.12 2007-10-30 19:57:59 carregal Exp $
+-- @release $Id: logging.lua,v 1.13 2008-07-24 20:17:39 alessandrohc Exp $
 -------------------------------------------------------------------------------
 
-local type, table, string, assert, _tostring = type, table, string, assert, tostring
+local type, table, string, assert, _tostring, tonumber = type, table, string, assert, tostring, tonumber
 
 module("logging")
 
