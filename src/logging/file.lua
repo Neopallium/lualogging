@@ -5,7 +5,7 @@
 --
 -- @copyright 2004-2007 Kepler Project
 --
--- @release $Id: file.lua,v 1.6 2008-07-28 16:23:38 alessandrohc Exp $
+-- @release $Id: file.lua,v 1.7 2008-08-06 01:02:25 alessandrohc Exp $
 -------------------------------------------------------------------------------
 
 require"logging"
@@ -38,11 +38,6 @@ function logging.file(filename, datePattern, logPattern)
     if type(filename) ~= "string" then
         filename = "lualogging.log"
     end
-    
-    local f, msg = openFileLogger(filename, datePattern)
-    if not f then
-       return nil, msg
-    end    
 
     return logging.new( function(self, level, message)
                             
