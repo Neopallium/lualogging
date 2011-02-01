@@ -51,3 +51,6 @@ function logging.file(filename, datePattern, logPattern)
                         end
                       )
 end
+
+return logging.file
+

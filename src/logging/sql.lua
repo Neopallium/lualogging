@@ -60,3 +60,6 @@ function logging.sql(params)
                         end
                       )
 end
+
+return logging.sql
+

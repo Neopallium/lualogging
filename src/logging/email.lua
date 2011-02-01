@@ -40,3 +40,6 @@ function logging.email(params)
                         end
                       )
 end
+
+return logging.email
+

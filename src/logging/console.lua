@@ -18,3 +18,6 @@ function logging.console(logPattern)
                         end
                       )
 end
+
+return logging.console
+
