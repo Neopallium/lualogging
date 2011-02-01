@@ -31,3 +31,6 @@ function logging.socket(address, port, logPattern)
                         end
                       )
 end
+
+return logging.socket
+
