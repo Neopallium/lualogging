@@ -22,12 +22,12 @@ build	= {
 	type		= 'none',
 	install = {
 		lua = {
-			['logging'] = "logging/logging.lua",
-			['logging.console']  = "logging/console.lua",
-			['logging.file']  = "logging/file.lua",
-			['logging.email']  = "logging/email.lua",
-			['logging.sql']  = "logging/sql.lua",
-			['logging.socket']  = "logging/socket.lua",
+			['logging'] = "src/logging.lua",
+			['logging.console']  = "src/logging/console.lua",
+			['logging.file']  = "src/logging/file.lua",
+			['logging.email']  = "src/logging/email.lua",
+			['logging.sql']  = "src/logging/sql.lua",
+			['logging.socket']  = "src/logging/socket.lua",
 		}
 	}
 }
