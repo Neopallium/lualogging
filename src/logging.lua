@@ -49,17 +49,20 @@ end
 
 -- private log function, with support for formating a complex log message.
 local function LOG_MSG(self, level, fmt, ...)
-	if type(fmt) == 'string' then
+	local f_type = type(fmt)
+	if f_type == 'string' then
 		if select('#', ...) > 0 then
 			return self:append(level, format(fmt, ...))
 		else
 			-- only a single string, no formating needed.
 			return self:append(level, fmt)
 		end
-	else
+	elseif f_type == 'function' then
 		-- fmt should be a callable function which returns the message to log
 		return self:append(level, format(fmt(...)))
 	end
+	-- fmt is not a string and not a function, just call tostring() on it.
+	return self:append(level, tostring(fmt))
 end
 
 -- create the proxy functions for each log level.
