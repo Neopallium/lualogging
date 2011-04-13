@@ -21,11 +21,11 @@ The changes that I have made allow more complex log message formatting to be don
 that log level is enabled.  This will decrease the impact of logging statement when their level 
 is disabled.
 
-* Use string.format() style formating:
+* Use string.format() style formatting:
 
 logger:info("Some message prefix: val1='%s', val2=%d", "some string value", 1234)
 
-* For more complex log message formating:
+* For more complex log message formatting:
 
 local function log_callback(val1, val2)
 	-- Do some complex pre-processing of parameters, maybe dump a table to a string.
