@@ -12,7 +12,7 @@
 
 <div id="product">
 	<div id="product_logo"><a href="http://www.keplerproject.org">
-		<img alt="LuaLogging logo" src="lualogging-128.png"/>
+		<img alt="LuaLogging logo" src="/images/lualogging-128.png"/>
 	</a></div>
 	<div id="product_name"><big><b>LuaLogging</b></big></div>
 	<div id="product_description">A simple API to use logging features in Lua</div>
@@ -45,8 +45,8 @@
 		<li><a href="manual.html#appenders">Appenders</a>
 			<ul>
 				<li><a href="console.html">Console</a></li>
-				<li><strong>File</strong></li>
-				<li><a href="sql.html">SQL</a></li>
+				<li><a href="file.html">File</a></li>
+				<li><strong>SQL</strong></li>
 				<li><a href="socket.html">Socket</a></li>
 				<li><a href="email.html">Email</a></li>
 			</ul>
@@ -63,52 +63,74 @@
 
 <div id="content">
 
-<h2>File appender</h2>
+<h2>SQL appender</h2>
 
-<p>The file appender can be used to write log messages to a file. It
-uses Lua I/O routines to do its job.</p>
+<p>The SQL appender can be used to write log messages to a SQL
+database table. It uses <a href="http://www.keplerproject.org/luasql/">LuaSQL</a>, 
+therefore any database supported by LuaSQL can be used.</p>
 
 <pre class="example">
-function logging.file(filename, [datePattern], [logPattern])
+function logging.sql{
+    connectionfactory = <i>function</i>,
+    [tablename = <i>string</i>,]
+    [logdatefield = <i>string</i>,]
+    [loglevelfield = <i>string</i>,]
+    [logmessagefield = <i>string</i>,]
+    [keepalive = <i>boolean</i>],
+}
 </pre>
 
 <ul>
-    <li><code>filename</code>:<br />
-    The name of the file to be written to. On each call to log a
-    message the file is opened for appending and closed immediately.<br />
-     If the file cannot be opened for appending the logging request
-    returns nil and an error message.</li>
+    <li><code>connectionfactory</code>:<br />
+    This must be a function that creates a LuaSQL connection object.
+    This function will be called everytime a connection needs to be
+    created.</li>
     
-    <li><code>datePattern</code>:<br />
-    This is an optional parameter that can be used to specify a date
-    pattern that will be passed to the
-    <a href="http://www.lua.org/manual/5.0/manual.html#libiosys"><code>os.date</code></a>
-    function to compose the filename.<br />
-    This is useful to create daily or monthly log files. If the user
-    wants to create one log file per day he specifies a
-    <code>"%Y-%m-%d"</code> pattern and a filename like
-    <code>"temp%s.log"</code>.</li>
+    <li><code>tablename</code>:<br />
+    The name of the table to write the log requests. Default value is
+    <code>"LogTable"</code>.</li>
     
-    <li><code>logPattern</code>:<br />
-    A pattern can be specified to control how the message is
-    written.<br />
-    The default value is <code>"%date %level %message\n"</code>.</li>
+    <li><code>logdatefield</code>:<br />
+    The name of the field to write the date of each log request.
+    Default value is <code>"LogDate"</code>.</li>
+    
+    <li><code>loglevelfield</code>:<br />
+    The name of the field to write the level of each log request.
+    Default value is <code>"LogLevel"</code>.</li>
+    
+    <li><code>logmessagefield</code>:<br />
+    The name of the field to write the message of each log request.
+    Default value is <code>"LogMessage"</code>.</li>
+    
+    <li><code>keepalive</code>:<br />
+    In every log request a connection to the database is opened, the
+    message is written, and the connection is closed.<br />
+    If the user wants to keep the connection opened he can specify
+    <code>keepalive = true</code>.</li>
 </ul>
 
 <h2>Example</h2>
 
 <pre class="example">
-require"logging.file"
+require"logging.sql"
+require"luasql.jdbc"
 
-local logger = logging.file("test%s.log", "%Y-%m-%d")
+local env, err = luasql.jdbc('com.mysql.jdbc.Driver')
 
-logger:info("logging.file test")
+local logger = logging.sql {
+  connectionfactory = function()
+    local con, err = env:connect('jdbc:mysql://localhost/test',
+                                 'tcp', '123')
+    assert(con, err)
+    return con
+  end,
+  keepalive = true,
+}
+
+logger:info("logging.sql test")
 logger:debug("debugging...")
 logger:error("error!")
 </pre>
-
-<p>&nbsp;</p>
-<p>&nbsp;</p>
 
 </div> <!-- id="content" -->
 

@@ -12,7 +12,7 @@
 
 <div id="product">
 	<div id="product_logo"><a href="http://www.keplerproject.org">
-		<img alt="LuaLogging logo" src="lualogging-128.png"/>
+		<img alt="LuaLogging logo" src="/images/lualogging-128.png"/>
 	</a></div>
 	<div id="product_name"><big><b>LuaLogging</b></big></div>
 	<div id="product_description">A simple API to use logging features in Lua</div>
@@ -44,10 +44,10 @@
 		</li>
 		<li><a href="manual.html#appenders">Appenders</a>
 			<ul>
-				<li><a href="console.html">Console</a></li>
+				<li><strong>Console</strong></li>
 				<li><a href="file.html">File</a></li>
 				<li><a href="sql.html">SQL</a></li>
-				<li><strong>Socket</strong></li>
+				<li><a href="socket.html">Socket</a></li>
 				<li><a href="email.html">Email</a></li>
 			</ul>
 		</li>
@@ -63,45 +63,37 @@
 
 <div id="content">
 
-<h2>Socket appender</h2>
+<h2>Console appender</h2>
 
-This appender can be used to send log requests through a socket.
-Socket appender relies on <a href=
-"http://www.tecgraf.puc-rio.br/luasocket">LuaSocket</a> to do its
-job.<br />
-Upon each log request a connection is opened, the message is sent
-and the connection is closed. 
+<p>Console is the simplest appender. It just writes the log messages
+to <code>io.stdout</code>.</p>
 
 <pre class="example">
-function logging.socket(address, port [,logPattern])
+function logging.console([logPattern])
 </pre>
 
 <ul>
-    <li><code>address</code>:<br />
-    Address can be an IP address or a host name for which the log
-    message will be sent.</li>
-    
-    <li><code>port</code>:<br />
-    The port must be an integer number in the range [1..64K).</li>
-    
     <li><code>logPattern</code>:<br />
     A pattern can be specified to control how the message is
     written.<br />
     The default value is <code>"%date %level %message\n"</code>.</li>
 </ul>
 
-<h2>Example</h2>
+<h2>Examples</h2>
 
 <pre class="example">
-require"logging.socket"
+require"logging.console"
 
-local logger = logging.socket("localhost", 5000)
+local logger = logging.console()
 
-logger:info("logging.socket test")
+logger:info("logging.console test")
 logger:debug("debugging...")
 logger:error("error!")
 </pre>
 
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
