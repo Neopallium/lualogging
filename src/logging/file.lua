@@ -5,7 +5,6 @@
 --
 -- @copyright 2004-2007 Kepler Project
 --
--- @release $Id: file.lua,v 1.7 2008-08-06 01:02:25 alessandrohc Exp $
 -------------------------------------------------------------------------------
 
 require"logging"

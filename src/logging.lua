@@ -6,7 +6,6 @@
 -- @author Thiago Costa Ponte (thiago@ideais.com.br)
 --
 -- @copyright 2004-2007 Kepler Project
--- @release $Id: logging.lua,v 1.13 2008-07-24 20:17:39 alessandrohc Exp $
 -------------------------------------------------------------------------------
 
 local type, table, string, _tostring, tonumber = type, table, string, tostring, tonumber

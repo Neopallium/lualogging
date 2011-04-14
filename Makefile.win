@@ -1,4 +1,3 @@
-# $Id: Makefile.win,v 1.4 2007-07-30 21:40:17 carregal Exp $
 
 LUA_DIR= c:\lua5.1\lua
 

@@ -5,7 +5,6 @@
 --
 -- @copyright 2004-2007 Kepler Project
 --
--- @release $Id: sql.lua,v 1.5 2008-01-17 16:25:46 carregal Exp $
 -------------------------------------------------------------------------------
 
 require"logging"

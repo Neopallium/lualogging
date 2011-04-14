@@ -1,5 +1,3 @@
-# $Id: Makefile,v 1.9 2007/10/29 22:57:43 carregal Exp $
-
 # Default prefix
 PREFIX = /usr/local
 
