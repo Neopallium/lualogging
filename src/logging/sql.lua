@@ -3,7 +3,7 @@
 --
 -- @author Thiago Costa Ponte (thiago@ideais.com.br)
 --
--- @copyright 2004-2007 Kepler Project
+-- @copyright 2004-2011 Kepler Project
 --
 -------------------------------------------------------------------------------
 

@@ -5,7 +5,7 @@
 -- @author Andre Carregal (info@keplerproject.org)
 -- @author Thiago Costa Ponte (thiago@ideais.com.br)
 --
--- @copyright 2004-2007 Kepler Project
+-- @copyright 2004-2011 Kepler Project
 -------------------------------------------------------------------------------
 
 local type, table, string, _tostring, tonumber = type, table, string, tostring, tonumber
@@ -16,7 +16,7 @@ local format = string.format
 module("logging")
 
 -- Meta information
-_COPYRIGHT = "Copyright (C) 2004-2007 Kepler Project"
+_COPYRIGHT = "Copyright (C) 2004-2011 Kepler Project"
 _DESCRIPTION = "A simple API to use logging features in Lua"
 _VERSION = "LuaLogging 1.1.4"
 
