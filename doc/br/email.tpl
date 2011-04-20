@@ -1,63 +1,3 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html>
-<head>
-	<title>LuaLogging: uma API simples para usar os recursos de log em Lua</title>
-    <link rel="stylesheet" href="http://www.keplerproject.org/doc.css" type="text/css"/>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-</head>
-<body>
-	
-<div id="container">
-
-<div id="product">
-	<div id="product_logo"><a href="http://www.keplerproject.org">
-    <img alt="Logotipo do LuaLogging" src="lualogging-128.png"/></a></div>
-	<div id="product_name"><big><strong>LuaLogging</strong></big></div>
-	<div id="product_description">Uma API simples para usar recursos de log em Lua</div>
-</div> <!-- id="product" -->
-
-<div id="main">
-
-<div id="navigation">
-<h1>LuaLogging</h1>
-	<ul>
-		<li><a href="index.html">In&iacute;cio</a>
-			<ul>
-				<li><a href="index.html#overview">Vis&atilde;o geral</a></li>
-				<li><a href="index.html#status">Status</a></li>
-				<li><a href="index.html#download">Download</a></li>
-				<li><a href="index.html#history">Hist&oacute;rico</a></li>
-				<li><a href="index.html#credits">Cr&eacute;ditos</a></li>
-				<li><a href="index.html#contact">Fale conosco</a></li>
-			</ul>
-		</li>
-		<li><a href="manual.html">Manual</a>
-			<ul>
-				<li><a href="manual.html#introduction">Introdu&ccedil;&atilde;o</a></li>
-				<li><a href="manual.html#installation">Instala&ccedil;&atilde;o</a></li>
-				<li><a href="manual.html#logger">Objetos logger</a></li>
-				<li><a href="manual.html#examples">Exemplos</a></li>
-			</ul>
-		</li>
-		<li><a href="manual.html#appenders">Appenders</a>
-			<ul>
-				<li><a href="console.html">Console</a></li>
-				<li><a href="file.html">Arquivo</a></li>
-				<li><a href="sql.html">SQL</a></li>
-				<li><a href="socket.html">Soquete</a></li>
-				<li><strong>Email</strong></li>
-			</ul>
-		</li>
-		<li><a href="https://github.com/Neopallium/lualogging">Project</a>
-			<ul>
-				<li><a href="https://github.com/Neopallium/lualogging/issues">Bug Tracker</a></li>
-			</ul>
-		</li>
-		<li><a href="license.html">Licen&ccedil;a</a></li>
-	</ul>
-</div> <!-- id="navigation" -->
-
 <div id="content">
 
 <h2>Appender de email</h2>
@@ -130,15 +70,3 @@ logger:error(&quot;erro!&quot;)
 </pre>
 
 </div> <!-- id="content" -->
-
-</div> <!-- id="main" -->
-
-<div id="about">
-	<p><a href="http://validator.w3.org/check?uri=referer">
-    <img src="http://www.w3.org/Icons/valid-xhtml10" alt="XHTML 1.0 v&aacute;lido!" height="31" width="88" /></a></p>
-</div> <!-- id="about" -->
-
-</div> <!-- id="container" -->
-
-</body>
-</html>
