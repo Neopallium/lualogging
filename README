@@ -29,8 +29,7 @@ logger:info("Some message prefix: val1='%s', val2=%d", "some string value", 1234
 
 local function log_callback(val1, val2)
 	-- Do some complex pre-processing of parameters, maybe dump a table to a string.
-	-- Note: all returned values are passed to string.format()
-	return "Some message prefix: val1='%s', val2=%d", val1, val2
+	return string.format("Some message prefix: val1='%s', val2=%d", val1, val2)
 end
 -- function 'log_callback' will only be called if the current log level is "DEBUG"
 logger:debug(log_callback, "some string value", 1234)

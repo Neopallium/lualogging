@@ -58,7 +58,7 @@ local function LOG_MSG(self, level, fmt, ...)
 		end
 	elseif f_type == 'function' then
 		-- fmt should be a callable function which returns the message to log
-		return self:append(level, format(fmt(...)))
+		return self:append(level, fmt(...))
 	end
 	-- fmt is not a string and not a function, just call tostring() on it.
 	return self:append(level, tostring(fmt))
