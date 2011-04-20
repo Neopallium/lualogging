@@ -68,22 +68,22 @@ defined as <code>logging.WARN</code> then <code>logging.INFO</code> and
 <h3>Methods</h3>
 
 <dl class="reference">
-    <dt><strong>logger:log (level, message)</strong></dt>
+    <dt><strong>logger:log (level, [message]|[table]|[format, ...]|[function, ...])</strong></dt>
     <dd>Logs a message with the specified level.</dd>
     
-    <dt><strong>logger:debug (message)</strong></dt>
+    <dt><strong>logger:debug ([message]|[table]|[format, ...]|[function, ...])</strong></dt>
     <dd>Logs a message with DEBUG level.</dd>
     
-    <dt><strong>logger:info (message)</strong></dt>
+    <dt><strong>logger:info ([message]|[table]|[format, ...]|[function, ...])</strong></dt>
     <dd>Logs a message with INFO level.</dd>
     
-    <dt><strong>logger:warn (message)</strong></dt>
+    <dt><strong>logger:warn ([message]|[table]|[format, ...]|[function, ...])</strong></dt>
     <dd>Logs a message with WARN level.</dd>
     
-    <dt><strong>logger:error (message)</strong></dt>
+    <dt><strong>logger:error ([message]|[table]|[format, ...]|[function, ...])</strong></dt>
     <dd>Logs a message with ERROR level.</dd>
     
-    <dt><strong>logger:fatal (message)</strong></dt>
+    <dt><strong>logger:fatal ([message]|[table]|[format, ...]|[function, ...])</strong></dt>
     <dd>Logs a message with FATAL level.</dd>
     
     <dt><strong>logger:setLevel (level)</strong></dt>
@@ -109,6 +109,22 @@ logger:log(logging.INFO, "sending email")
 logger:info("trying to contact server")
 logger:warn("server did not responded yet")
 logger:error("server unreachable")
+
+-- dump a table in a log message
+local tab = { a = 1, b = 2 }
+logger:debug(tab)
+
+-- use string.format() style formatting
+logger:info("val1='%s', val2=%d", "string value", 1234)
+
+-- complex log formatting.
+local function log_callback(val1, val2)
+	-- Do some complex pre-processing of parameters, maybe dump a table to a string.
+	return string.format("val1='%s', val2=%d", val1, val2)
+end
+-- function 'log_callback' will only be called if the current log level is "DEBUG"
+logger:debug(log_callback, "string value", 1234)
+
 </pre>
 
 <p>Upon execution of the above example the following lines will
@@ -129,6 +145,7 @@ The following appenders are included in the standard distribution.
 <ul>
 <li><a href="console.html">Console</a></li>
 <li><a href="file.html">File</a></li>
+<li><a href="rolling_file.html">Rolling File</a></li>
 <li><a href="sql.html">SQL</a></li>
 <li><a href="socket.html">Socket</a></li>
 <li><a href="email.html">Email</a></li>

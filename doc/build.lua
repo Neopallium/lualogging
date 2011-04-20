@@ -1,6 +1,5 @@
 
-local page = arg[1] or 'index.html'
-local lang = arg[2] or 'us/'
+local out_html = arg[1] or 'html/'
 
 local function dump_file(out, file)
 	local fd = assert(io.open(file))
@@ -38,16 +37,16 @@ local pages = {
 	"socket.html",
 	"email.html",
 }
+-- map <lang. template path> -> <lang. html output path>
 local languages = {
-	"us",
-	"br",
+	["us/"] = "", -- english is the default.
+	["br/"] = "br/",
 }
 
-for l=1,#languages do
-	local lang = languages[l] .. '/'
+for lang, lang_out in pairs(languages) do
 	for p=1,#pages do
 		local page = pages[p]
-		dump_page(lang .. page, page, lang)
+		dump_page(out_html .. lang_out .. page, page, lang)
 	end
 end
 
