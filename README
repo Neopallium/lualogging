@@ -6,7 +6,7 @@ LuaLogging provides a simple API to use logging features in Lua.
 Its design was based on log4j. LuaLogging currently supports,
 through the use of appenders, console, file, email, socket and sql outputs.
 
-Current version is 1.1.4. It was developed for Lua 5.1.
+Current version is 1.2.0. It was developed for Lua 5.1.
 
 LuaLogging is free software and uses the same license as Lua 5.1. It is part of the Kepler Project. 
 
@@ -14,6 +14,13 @@ Please see docs at http://neopallium.github.com/lualogging/ for more details
 
 Installation
 ============
+
+Release 1.2.0
+-------------
+
+With LuaRocks:
+
+	$ sudo luarocks install https://github.com/Neopallium/lualogging/raw/master/lualogging-1.2.0-1.rockspec
 
 Latest Git revision
 -------------------
