@@ -30,5 +30,8 @@ build	= {
 			['logging.sql']  = "src/logging/sql.lua",
 			['logging.socket']  = "src/logging/socket.lua",
 		}
-	}
+	},
+	copy_directories = {
+		"doc/html",
+	},
 }
