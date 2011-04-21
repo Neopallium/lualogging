@@ -20,7 +20,7 @@ Release 1.2.0
 
 With LuaRocks:
 
-	$ sudo luarocks install https://github.com/Neopallium/lualogging/raw/master/lualogging-1.2.0-1.rockspec
+	$ sudo luarocks install lualogging
 
 Latest Git revision
 -------------------
