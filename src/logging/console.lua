@@ -7,7 +7,7 @@
 --
 -------------------------------------------------------------------------------
 
-require"logging"
+local logging = require"logging"
 
 function logging.console(logPattern)
 

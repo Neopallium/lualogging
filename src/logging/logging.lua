@@ -13,31 +13,31 @@ local select = select
 local error = error
 local format = string.format
 
-module("logging")
+local export = {}
 
 -- Meta information
-_COPYRIGHT = "Copyright (C) 2004-2011 Kepler Project"
-_DESCRIPTION = "A simple API to use logging features in Lua"
-_VERSION = "LuaLogging 1.1.4"
+export._COPYRIGHT = "Copyright (C) 2004-2011 Kepler Project"
+export._DESCRIPTION = "A simple API to use logging features in Lua"
+export._VERSION = "LuaLogging 1.2.0"
 
 -- The DEBUG Level designates fine-grained instring.formational events that are most
 -- useful to debug an application
-DEBUG = "DEBUG"
+export.DEBUG = "DEBUG"
 
 -- The INFO level designates instring.formational messages that highlight the
 -- progress of the application at coarse-grained level
-INFO = "INFO"
+export.INFO = "INFO"
 
 -- The WARN level designates potentially harmful situations
-WARN = "WARN"
+export.WARN = "WARN"
 
 -- The ERROR level designates error events that might still allow the
 -- application to continue running
-ERROR = "ERROR"
+export.ERROR = "ERROR"
 
 -- The FATAL level designates very severe error events that will presumably
 -- lead the application to abort
-FATAL = "FATAL"
+export.FATAL = "FATAL"
 
 local LEVEL = {"DEBUG", "INFO", "WARN", "ERROR", "FATAL"}
 local MAX_LEVELS = #LEVEL
@@ -77,7 +77,7 @@ end
 -- do nothing function for disabled levels.
 local function disable_level() end
 
--- improved assertion funciton.
+-- improved assertion function.
 local function assert(exp, ...)
 	-- if exp is true, we are finished so don't do any processing of the parameters
 	if exp then return exp, ... end
@@ -91,7 +91,7 @@ end
 --	log-level to the log stream.
 -- @return Table representing the new logger object.
 -------------------------------------------------------------------------------
-function new(append)
+function export.new(append)
 
 	if type(append) ~= "function" then
 		return nil, "Appender must be a function."
@@ -103,6 +103,7 @@ function new(append)
 	logger.setLevel = function (self, level)
 		local order = LEVEL[level]
 		assert(order, "undefined level `%s'", _tostring(level))
+		self:log(export.WARN, "Logger: changing loglevel from %s to %s", _tostring(self.level), _tostring(level))
 		self.level = level
 		self.level_order = order
 		-- enable/disable levels
@@ -127,7 +128,7 @@ function new(append)
 	end
 
 	-- initialize log level.
-	logger:setLevel(DEBUG)
+	logger:setLevel(export.DEBUG)
 	return logger
 end
 
@@ -135,7 +136,7 @@ end
 -------------------------------------------------------------------------------
 -- Prepares the log message
 -------------------------------------------------------------------------------
-function prepareLogMsg(pattern, dt, level, message)
+function export.prepareLogMsg(pattern, dt, level, message)
 
     local logMsg = pattern or "%date %level %message\n"
     message = string.gsub(message, "%%", "%%%%")
@@ -151,7 +152,7 @@ end
 --
 -- Converts Table fields in alphabetical order
 -------------------------------------------------------------------------------
-function tostring(value)
+function export.tostring(value)
   local str = ''
 
   if (type(value) ~= 'table') then
@@ -187,3 +188,7 @@ function tostring(value)
   end
   return str
 end
+
+-- for compatibility export to global
+logging = export
+return export

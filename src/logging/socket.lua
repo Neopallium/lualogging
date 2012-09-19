@@ -7,7 +7,7 @@
 --
 -------------------------------------------------------------------------------
 
-require"logging"
+local logging = require"logging"
 local socket = require"socket"
 
 function logging.socket(address, port, logPattern)
@@ -19,13 +19,13 @@ function logging.socket(address, port, logPattern)
                             if not socket then
                                 return nil, err
                             end
-                            
+
                             local cond, err = socket:send(s)
                             if not cond then
                                 return nil, err
                             end
                             socket:close()
-                            
+
                             return true
                         end
                       )

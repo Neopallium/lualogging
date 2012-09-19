@@ -7,14 +7,14 @@
 --
 -------------------------------------------------------------------------------
 
-require"logging"
+local logging = require"logging"
 local smtp = require"socket.smtp"
 
 function logging.email(params)
 
     params = params or {}
     params.headers = params.headers or {}
-    
+
     if params.from == nil then
         return nil, "'from' parameter is required"
     end
@@ -29,12 +29,12 @@ function logging.email(params)
                             end
                             local msg = { headers = params.headers, body = s }
                             params.source = smtp.message(msg)
-                            
+
                             local r, e = smtp.send(params)
                             if not r then
                                 return nil, e
                             end
-                            
+
                             return true
                         end
                       )
