@@ -61,7 +61,7 @@ local function LOG_MSG(self, level, fmt, ...)
 		return self:append(level, fmt(...))
 	end
 	-- fmt is not a string and not a function, just call tostring() on it.
-	return self:append(level, tostring(fmt))
+	return self:append(level, export.tostring(fmt))
 end
 
 -- create the proxy functions for each log level.
@@ -163,32 +163,30 @@ function export.tostring(value)
     end
   else
     local auxTable = {}
-    table.foreach(value, function(i, v)
+    for i, v in pairs(value) do
       if (tonumber(i) ~= i) then
         table.insert(auxTable, i)
       else
-        table.insert(auxTable, tostring(i))
+        table.insert(auxTable, export.tostring(i))
       end
-    end)
+    end
     table.sort(auxTable)
 
     str = str..'{'
     local separator = ""
     local entry = ""
-    table.foreachi (auxTable, function (i, fieldName)
+    for i, fieldName in ipairs(auxTable) do
       if ((tonumber(fieldName)) and (tonumber(fieldName) > 0)) then
-        entry = tostring(value[tonumber(fieldName)])
+        entry = export.tostring(value[tonumber(fieldName)])
       else
-        entry = fieldName.." = "..tostring(value[fieldName])
+        entry = fieldName.." = "..export.tostring(value[fieldName])
       end
       str = str..separator..entry
       separator = ", "
-    end)
+    end
     str = str..'}'
   end
   return str
 end
 
--- for compatibility export to global
-logging = export
 return export
