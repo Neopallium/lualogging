@@ -103,7 +103,9 @@ function export.new(append)
 	logger.setLevel = function (self, level)
 		local order = LEVEL[level]
 		assert(order, "undefined level `%s'", _tostring(level))
-		self:log(export.WARN, "Logger: changing loglevel from %s to %s", _tostring(self.level), _tostring(level))
+		if self.level then 
+      self:log(export.WARN, "Logger: changing loglevel from %s to %s", _tostring(self.level), _tostring(level))
+    end
 		self.level = level
 		self.level_order = order
 		-- enable/disable levels

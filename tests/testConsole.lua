@@ -1,6 +1,5 @@
-require"logging.console"
-
-local logger = logging.console()
+local logging = require"logging"
+local logger = require("logging.console")()
 
 logger:info("logging.console test")
 logger:debug("debugging...")
