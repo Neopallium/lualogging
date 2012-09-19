@@ -1,4 +1,3 @@
-require "logging.sql"
 local has_module, err = pcall(require, "luasql.sqlite3")
 if not has_module then
    print("SQLite 3 Logging SKIP (missing luasql.sqlite3)")
@@ -8,14 +7,14 @@ else
    else
       local env, err = luasql.sqlite3()
 
-      local logger = logging.sql{
+      local logger = require("logging.sql")({
          connectionfactory = function()
                                 local con, err = env:connect("test.db")
                                 assert(con, err)
                                 return con
                              end,
          keepalive = true,
-      }
+      })
 
       logger:info("logging.sql test")
       logger:debug("debugging...")

@@ -1,4 +1,3 @@
-local logging = require"logging"
 local logger = require("logging.console")()
 
 logger:info("logging.console test")
