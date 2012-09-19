@@ -1,10 +1,10 @@
 #!/usr/bin/env lua
 
 package	= "lualogging"
-version	= "1.2.0-1"
+version	= "2.0.0-1"
 source	= {
 	url	= "git://github.com/Neopallium/lualogging.git",
-	branch = "v1.2.0",
+	branch = "v2.0.0",
 }
 description	= {
 	summary	= "A simple API to use logging features",

@@ -5,7 +5,7 @@
 -- @author Andre Carregal (info@keplerproject.org)
 -- @author Thiago Costa Ponte (thiago@ideais.com.br)
 --
--- @copyright 2004-2011 Kepler Project
+-- @copyright 2004-2012 Kepler Project
 -------------------------------------------------------------------------------
 
 local type, table, string, _tostring, tonumber = type, table, string, tostring, tonumber
@@ -16,9 +16,9 @@ local format = string.format
 local export = {}
 
 -- Meta information
-export._COPYRIGHT = "Copyright (C) 2004-2011 Kepler Project"
+export._COPYRIGHT = "Copyright (C) 2004-2012 Kepler Project"
 export._DESCRIPTION = "A simple API to use logging features in Lua"
-export._VERSION = "LuaLogging 1.2.0"
+export._VERSION = "LuaLogging 2.0.0"
 
 -- The DEBUG Level designates fine-grained instring.formational events that are most
 -- useful to debug an application
