@@ -1,14 +1,14 @@
 ---------------------------------------------------------------------------
--- RollingFileAppender is a FileAppender that rolls over the logfile 
--- once it has reached a certain size limit. It also mantains a 
+-- RollingFileAppender is a FileAppender that rolls over the logfile
+-- once it has reached a certain size limit. It also mantains a
 -- maximum number of log files.
 --
 -- @author Tiago Cesar Katcipis (tiagokatcipis@gmail.com)
 --
--- @copyright 2004-2007 Kepler Project
+-- @copyright 2004-2012 Kepler Project
 ---------------------------------------------------------------------------
 
-require"logging"
+local logging = require"logging"
 
 
 local function openFile(self)
@@ -32,23 +32,23 @@ local rollOver = function (self)
 
     local _, msg = os.rename(self.filename, self.filename..".".."1")
 
-    if msg then 
+    if msg then
         return nil, string.format("error %s on log rollover", msg)
     end
 
-    return openFile(self)    
+    return openFile(self)
 end
 
 
 local openRollingFileLogger = function (self)
-	
+
     if not self.file then
-        return openFile(self) 
+        return openFile(self)
     end
 
     local filesize = self.file:seek("end", 0)
- 
-    if (filesize < self.maxSize) then 
+
+    if (filesize < self.maxSize) then
         return self.file
     end
 
@@ -62,20 +62,22 @@ function logging.rolling_file(filename, maxFileSize, maxBackupIndex, logPattern)
         filename = "lualogging.log"
     end
 
-    local obj = {  filename     = filename, 
+    local obj = {  filename     = filename,
                    maxSize      = maxFileSize,
                    maxIndex     = maxBackupIndex or 1
                 }
 
     return logging.new( function(self, level, message)
-                            
+
                             local f, msg = openRollingFileLogger(obj)
                             if not f then
 			        return nil, msg
-		            end              
+		            end
                             local s = logging.prepareLogMsg(logPattern, os.date(), level, message)
                             f:write(s)
                             return true
                         end
                       )
 end
+
+return logging.rolling_file

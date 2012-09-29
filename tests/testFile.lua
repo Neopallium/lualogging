@@ -29,10 +29,8 @@ os.date = function (...)
 	return mock.date
 end
 
-require "logging.file"
-
 mock.date = "2008-01-01"
-local logger = logging.file("__TEST%s.log", "%Y-%m-%d")
+local logger = require("logging.file")("__TEST%s.log", "%Y-%m-%d")
 
 assert(mock.handle["__TEST"..mock.date..".log"] == nil)
 
@@ -65,3 +63,5 @@ assert(mock.handle["__TEST"..mock.date..".log"].lines[1] == '2008-01-03 INFO {id
 
 os.date = GLOBAL_OS_DATE
 io.open = GLOBAL_IO_OPEN
+
+print("File Logging OK")

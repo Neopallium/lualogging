@@ -3,11 +3,11 @@
 --
 -- @author Thiago Costa Ponte (thiago@ideais.com.br)
 --
--- @copyright 2004-2011 Kepler Project
+-- @copyright 2004-2012 Kepler Project
 --
 -------------------------------------------------------------------------------
 
-require"logging"
+local logging = require"logging"
 
 function logging.console(logPattern)
 
