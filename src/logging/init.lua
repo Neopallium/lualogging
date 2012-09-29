@@ -12,7 +12,6 @@ local type, table, string, _tostring, tonumber = type, table, string, tostring, 
 local select = select
 local error = error
 local format = string.format
-
 local export = {}
 
 -- Meta information
@@ -99,14 +98,16 @@ function export.new(append)
 
 	local logger = {}
 	logger.append = append
+  logger.initiallevel = true
 
 	logger.setLevel = function (self, level)
 		local order = LEVEL[level]
 		assert(order, "undefined level `%s'", _tostring(level))
-		if self.level then 
+		if self.level and not self.initiallevel then 
       self:log(export.WARN, "Logger: changing loglevel from %s to %s", _tostring(self.level), _tostring(level))
     end
 		self.level = level
+    self.initiallevel = nil
 		self.level_order = order
 		-- enable/disable levels
 		for i=1,MAX_LEVELS do
@@ -131,6 +132,7 @@ function export.new(append)
 
 	-- initialize log level.
 	logger:setLevel(export.DEBUG)
+  logger.initiallevel = true
 	return logger
 end
 
