@@ -64,3 +64,6 @@ assert(mock.handle["__TEST"..mock.date..".log"].lines[1] == '2008-01-03 INFO {id
 
 os.date = GLOBAL_OS_DATE
 io.open = GLOBAL_IO_OPEN
+
+print("File Logging OK")
+

@@ -13,3 +13,4 @@ logger:debug("debugging...")
 logger:error("error!")
 
 print("Mail Logging OK")
+

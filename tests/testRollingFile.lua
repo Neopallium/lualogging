@@ -26,4 +26,5 @@ for i = 1, max_index do
 	file:close()
 end
 
-print("done")
+print("RollingFile Logging OK")
+

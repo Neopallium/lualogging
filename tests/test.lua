@@ -13,3 +13,4 @@ for _, filename in ipairs(test) do
 	dofile(filename)
 end
 print ("End of Logging tests")
+
