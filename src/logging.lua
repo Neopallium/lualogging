@@ -105,6 +105,9 @@ function logging.new(append)
 	logger.setLevel = function (self, level)
 		local order = LEVEL[level]
 		assert(order, "undefined level `%s'", _tostring(level))
+		if self.level then
+			self:log(logging.WARN, "Logger: changing loglevel from %s to %s", self.level, level)
+		end
 		self.level = level
 		self.level_order = order
 		-- enable/disable levels
