@@ -8,7 +8,7 @@
 -- @copyright 2004-2007 Kepler Project
 ---------------------------------------------------------------------------
 
-require"logging"
+local logging = require"logging"
 
 local function openFile(self)
 	self.file = io.open(self.filename, "a")
@@ -74,3 +74,6 @@ function logging.rolling_file(filename, maxFileSize, maxBackupIndex, logPattern)
 		return true
 	end)
 end
+
+return logging.rolling_file
+

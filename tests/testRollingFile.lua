@@ -1,10 +1,10 @@
-require "logging.rolling_file"
+local log_file = require "logging.rolling_file"
 
 local max_size       = 1024 * 10 --10kb
 local max_index      = 5
 local total_log_size = max_size * max_index --more than needed because of the log pattern
 local log_filename   = "test.log"
-local logger         = logging.rolling_file(log_filename, max_size, max_index)
+local logger         = log_file(log_filename, max_size, max_index)
 
 
 -- it will generate the log + max_index backup files

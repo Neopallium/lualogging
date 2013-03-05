@@ -7,7 +7,7 @@
 --
 -------------------------------------------------------------------------------
 
-require"logging"
+local logging = require"logging"
 
 local lastFileNameDatePattern
 local lastFileHandler

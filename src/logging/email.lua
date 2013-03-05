@@ -7,7 +7,7 @@
 --
 -------------------------------------------------------------------------------
 
-require"logging"
+local logging = require"logging"
 local smtp = require"socket.smtp"
 
 function logging.email(params)

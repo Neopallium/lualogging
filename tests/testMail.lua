@@ -1,6 +1,6 @@
-require"logging.email"
+local log_email = require"logging.email"
 
-local logger = logging.email {
+local logger = log_email {
 	rcpt = "mail@host.com",
 	from = "mail@host.com",
 	{

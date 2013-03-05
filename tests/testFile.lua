@@ -28,10 +28,10 @@ os.date = function (...)
 	return mock.date
 end
 
-require "logging.file"
+local log_file = require "logging.file"
 
 mock.date = "2008-01-01"
-local logger = logging.file("__TEST%s.log", "%Y-%m-%d")
+local logger = log_file("__TEST%s.log", "%Y-%m-%d")
 
 assert(mock.handle["__TEST"..mock.date..".log"] == nil)
 

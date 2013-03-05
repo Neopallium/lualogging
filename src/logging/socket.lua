@@ -7,7 +7,7 @@
 --
 -------------------------------------------------------------------------------
 
-require"logging"
+local logging = require"logging"
 local socket = require"socket"
 
 function logging.socket(address, port, logPattern)
