@@ -18,7 +18,7 @@ module("logging")
 -- Meta information
 _COPYRIGHT = "Copyright (C) 2004-2011 Kepler Project"
 _DESCRIPTION = "A simple API to use logging features in Lua"
-_VERSION = "LuaLogging 1.1.4"
+_VERSION = "LuaLogging 1.2.0"
 
 -- The DEBUG Level designates fine-grained instring.formational events that are most
 -- useful to debug an application
