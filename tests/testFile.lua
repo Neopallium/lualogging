@@ -7,7 +7,6 @@ local mock = {
 }
 
 io.open = function (file, mode)
-
 	if (not string.find(file, "^__TEST*")) then
 		return GLOBAL_IO_OPEN(file, mode)
 	end

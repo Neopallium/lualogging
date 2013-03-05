@@ -13,10 +13,8 @@ local lastFileNameDatePattern
 local lastFileHandler
 
 local openFileLogger = function (filename, datePattern)
-
 	local filename = string.format(filename, os.date(datePattern))
 	if (lastFileNameDatePattern ~= filename) then
-
 		local f = io.open(filename, "a")
 		if (f) then
 			f:setvbuf ("line")
@@ -29,26 +27,22 @@ local openFileLogger = function (filename, datePattern)
 	else
 		return lastFileHandler
 	end
-
 end
 
 function logging.file(filename, datePattern, logPattern)
+	if type(filename) ~= "string" then
+		filename = "lualogging.log"
+	end
 
-    if type(filename) ~= "string" then
-        filename = "lualogging.log"
-    end
-
-    return logging.new( function(self, level, message)
-
-                            local f, msg = openFileLogger(filename, datePattern)
-                            if not f then
-						       return nil, msg
-						    end
-                            local s = logging.prepareLogMsg(logPattern, os.date(), level, message)
-                            f:write(s)
-                            return true
-                        end
-                      )
+	return logging.new( function(self, level, message)
+		local f, msg = openFileLogger(filename, datePattern)
+		if not f then
+			return nil, msg
+		end
+		local s = logging.prepareLogMsg(logPattern, os.date(), level, message)
+		f:write(s)
+		return true
+	end)
 end
 
 return logging.file

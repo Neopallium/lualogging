@@ -92,7 +92,6 @@ end
 -- @return Table representing the new logger object.
 -------------------------------------------------------------------------------
 function new(append)
-
 	if type(append) ~= "function" then
 		return nil, "Appender must be a function."
 	end
@@ -136,13 +135,12 @@ end
 -- Prepares the log message
 -------------------------------------------------------------------------------
 function prepareLogMsg(pattern, dt, level, message)
-
-    local logMsg = pattern or "%date %level %message\n"
-    message = string.gsub(message, "%%", "%%%%")
-    logMsg = string.gsub(logMsg, "%%date", dt)
-    logMsg = string.gsub(logMsg, "%%level", level)
-    logMsg = string.gsub(logMsg, "%%message", message)
-    return logMsg
+	local logMsg = pattern or "%date %level %message\n"
+	message = string.gsub(message, "%%", "%%%%")
+	logMsg = string.gsub(logMsg, "%%date", dt)
+	logMsg = string.gsub(logMsg, "%%level", level)
+	logMsg = string.gsub(logMsg, "%%message", message)
+	return logMsg
 end
 
 
@@ -152,38 +150,38 @@ end
 -- Converts Table fields in alphabetical order
 -------------------------------------------------------------------------------
 function tostring(value)
-  local str = ''
+	local str = ''
 
-  if (type(value) ~= 'table') then
-    if (type(value) == 'string') then
-      str = string.format("%q", value)
-    else
-      str = _tostring(value)
-    end
-  else
-    local auxTable = {}
-    table.foreach(value, function(i, v)
-      if (tonumber(i) ~= i) then
-        table.insert(auxTable, i)
-      else
-        table.insert(auxTable, tostring(i))
-      end
-    end)
-    table.sort(auxTable)
-
-    str = str..'{'
-    local separator = ""
-    local entry = ""
-    table.foreachi (auxTable, function (i, fieldName)
-      if ((tonumber(fieldName)) and (tonumber(fieldName) > 0)) then
-        entry = tostring(value[tonumber(fieldName)])
-      else
-        entry = fieldName.." = "..tostring(value[fieldName])
-      end
-      str = str..separator..entry
-      separator = ", "
-    end)
-    str = str..'}'
-  end
-  return str
+	if (type(value) ~= 'table') then
+		if (type(value) == 'string') then
+			str = string.format("%q", value)
+		else
+			str = _tostring(value)
+		end
+	else
+		local auxTable = {}
+		table.foreach(value, function(i, v)
+			if (tonumber(i) ~= i) then
+				table.insert(auxTable, i)
+			else
+				table.insert(auxTable, tostring(i))
+			end
+		end)
+		table.sort(auxTable)
+	
+		str = str..'{'
+		local separator = ""
+		local entry = ""
+		table.foreachi (auxTable, function (i, fieldName)
+			if ((tonumber(fieldName)) and (tonumber(fieldName) > 0)) then
+				entry = tostring(value[tonumber(fieldName)])
+			else
+				entry = fieldName.." = "..tostring(value[fieldName])
+			end
+			str = str..separator..entry
+			separator = ", "
+		end)
+		str = str..'}'
+	end
+	return str
 end

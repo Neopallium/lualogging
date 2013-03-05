@@ -1,11 +1,11 @@
 require"logging.email"
 
 local logger = logging.email {
-                               rcpt = "mail@host.com",
-                               from = "mail@host.com",
-                               {
-                                 subject = "[%level] logging.email test",
-                               }, -- headers
+	rcpt = "mail@host.com",
+	from = "mail@host.com",
+	{
+		subject = "[%level] logging.email test",
+	}, -- headers
 }
 
 logger:info("logging.sql test")

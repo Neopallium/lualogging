@@ -11,24 +11,22 @@ require"logging"
 local socket = require"socket"
 
 function logging.socket(address, port, logPattern)
+	return logging.new( function(self, level, message)
+		local s = logging.prepareLogMsg(logPattern, os.date(), level, message)
 
-    return logging.new( function(self, level, message)
-                            local s = logging.prepareLogMsg(logPattern, os.date(), level, message)
+		local socket, err = socket.connect(address, port)
+		if not socket then
+			return nil, err
+		end
 
-                            local socket, err = socket.connect(address, port)
-                            if not socket then
-                                return nil, err
-                            end
+		local cond, err = socket:send(s)
+		if not cond then
+			return nil, err
+		end
+		socket:close()
 
-                            local cond, err = socket:send(s)
-                            if not cond then
-                                return nil, err
-                            end
-                            socket:close()
-
-                            return true
-                        end
-                      )
+		return true
+	end)
 end
 
 return logging.socket
