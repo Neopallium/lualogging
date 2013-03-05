@@ -15,31 +15,32 @@ local format = string.format
 local pairs = pairs
 local ipairs = ipairs
 
-module("logging")
+local logging = {
 
 -- Meta information
-_COPYRIGHT = "Copyright (C) 2004-2011 Kepler Project"
-_DESCRIPTION = "A simple API to use logging features in Lua"
-_VERSION = "LuaLogging 1.2.0"
+_COPYRIGHT = "Copyright (C) 2004-2011 Kepler Project",
+_DESCRIPTION = "A simple API to use logging features in Lua",
+_VERSION = "LuaLogging 1.2.0",
 
 -- The DEBUG Level designates fine-grained instring.formational events that are most
 -- useful to debug an application
-DEBUG = "DEBUG"
+DEBUG = "DEBUG",
 
 -- The INFO level designates instring.formational messages that highlight the
 -- progress of the application at coarse-grained level
-INFO = "INFO"
+INFO = "INFO",
 
 -- The WARN level designates potentially harmful situations
-WARN = "WARN"
+WARN = "WARN",
 
 -- The ERROR level designates error events that might still allow the
 -- application to continue running
-ERROR = "ERROR"
+ERROR = "ERROR",
 
 -- The FATAL level designates very severe error events that will presumably
 -- lead the application to abort
-FATAL = "FATAL"
+FATAL = "FATAL",
+}
 
 local LEVEL = {"DEBUG", "INFO", "WARN", "ERROR", "FATAL"}
 local MAX_LEVELS = #LEVEL
@@ -63,7 +64,7 @@ local function LOG_MSG(self, level, fmt, ...)
 		return self:append(level, fmt(...))
 	end
 	-- fmt is not a string and not a function, just call tostring() on it.
-	return self:append(level, tostring(fmt))
+	return self:append(level, logging.tostring(fmt))
 end
 
 -- create the proxy functions for each log level.
@@ -93,7 +94,7 @@ end
 --	log-level to the log stream.
 -- @return Table representing the new logger object.
 -------------------------------------------------------------------------------
-function new(append)
+function logging.new(append)
 	if type(append) ~= "function" then
 		return nil, "Appender must be a function."
 	end
@@ -128,7 +129,7 @@ function new(append)
 	end
 
 	-- initialize log level.
-	logger:setLevel(DEBUG)
+	logger:setLevel(logging.DEBUG)
 	return logger
 end
 
@@ -136,7 +137,7 @@ end
 -------------------------------------------------------------------------------
 -- Prepares the log message
 -------------------------------------------------------------------------------
-function prepareLogMsg(pattern, dt, level, message)
+function logging.prepareLogMsg(pattern, dt, level, message)
 	local logMsg = pattern or "%date %level %message\n"
 	message = string.gsub(message, "%%", "%%%%")
 	logMsg = string.gsub(logMsg, "%%date", dt)
@@ -151,7 +152,7 @@ end
 --
 -- Converts Table fields in alphabetical order
 -------------------------------------------------------------------------------
-function tostring(value)
+local function tostring(value)
 	local str = ''
 
 	if (type(value) ~= 'table') then
@@ -187,3 +188,11 @@ function tostring(value)
 	end
 	return str
 end
+logging.tostring = tostring
+
+if _VERSION ~= 'Lua 5.2' then
+	-- still create 'logging' global for Lua versions < 5.2
+	_G.logging = logging
+end
+
+return logging
