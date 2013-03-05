@@ -8,7 +8,7 @@ local logger = log_email {
 	}, -- headers
 }
 
-logger:info("logging.sql test")
+logger:info("logging.email test")
 logger:debug("debugging...")
 logger:error("error!")
 

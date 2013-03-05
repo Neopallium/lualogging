@@ -80,7 +80,7 @@ end
 -- do nothing function for disabled levels.
 local function disable_level() end
 
--- improved assertion funciton.
+-- improved assertion function.
 local function assert(exp, ...)
 	-- if exp is true, we are finished so don't do any processing of the parameters
 	if exp then return exp, ... end
