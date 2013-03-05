@@ -12,6 +12,8 @@ local type, table, string, _tostring, tonumber = type, table, string, tostring, 
 local select = select
 local error = error
 local format = string.format
+local pairs = pairs
+local ipairs = ipairs
 
 module("logging")
 
@@ -160,19 +162,19 @@ function tostring(value)
 		end
 	else
 		local auxTable = {}
-		table.foreach(value, function(i, v)
-			if (tonumber(i) ~= i) then
-				table.insert(auxTable, i)
+		for key in pairs(value) do
+			if (tonumber(key) ~= key) then
+				table.insert(auxTable, key)
 			else
-				table.insert(auxTable, tostring(i))
+				table.insert(auxTable, tostring(key))
 			end
-		end)
+		end
 		table.sort(auxTable)
 	
 		str = str..'{'
 		local separator = ""
 		local entry = ""
-		table.foreachi (auxTable, function (i, fieldName)
+		for _, fieldName in ipairs(auxTable) do
 			if ((tonumber(fieldName)) and (tonumber(fieldName) > 0)) then
 				entry = tostring(value[tonumber(fieldName)])
 			else
@@ -180,7 +182,7 @@ function tostring(value)
 			end
 			str = str..separator..entry
 			separator = ", "
-		end)
+		end
 		str = str..'}'
 	end
 	return str
