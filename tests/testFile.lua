@@ -11,7 +11,7 @@ io.open = function (file, mode)
 	if (not string.find(file, "^__TEST*")) then
 		return GLOBAL_IO_OPEN(file, mode)
 	end
-		
+
 	mock.handle[file] = {}
 	mock.handle[file].lines = {}
 	mock.handle[file].mode = mode
@@ -21,7 +21,7 @@ io.open = function (file, mode)
 		end,
 		write = function (_, s)
 			table.insert(mock.handle[file].lines, s)
-		end,	
+		end,
 	}
 end
 

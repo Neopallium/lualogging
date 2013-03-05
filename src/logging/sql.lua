@@ -20,12 +20,12 @@ function logging.sql(params)
 	if params.connectionfactory == nil or type(params.connectionfactory) ~= "function" then
 		return nil, "No specified connection factory function"
 	end
-	
+
     local con, err
     if params.keepalive then
         con, err = params.connectionfactory()
     end
-    
+
     return logging.new( function(self, level, message)
                             if (not params.keepalive) or (con == nil) then
                                 con, err = params.connectionfactory()
@@ -33,12 +33,12 @@ function logging.sql(params)
                                     return nil, err
                                 end
                             end
-                            
+
                             local logDate = os.date("%Y-%m-%d %H:%M:%S")
                             local insert  = string.format("INSERT INTO %s (%s, %s, %s) VALUES ('%s', '%s', '%s')",
-                                                          params.tablename, params.logdatefield, params.loglevelfield, 
+                                                          params.tablename, params.logdatefield, params.loglevelfield,
                                                           params.logmessagefield, logDate, level, string.gsub(message, "'", "''"))
-                            
+
                             local ret, err = pcall(con.execute, con, insert)
                             if not ret then
                                 con, err = params.connectionfactory()
@@ -50,11 +50,11 @@ function logging.sql(params)
                                     return nil, err
                                 end
                             end
-                            
+
                             if not params.keepalive then
                                 con:close()
                             end
-                            
+
                             return true
                         end
                       )

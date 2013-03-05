@@ -3,8 +3,8 @@ require"logging.email"
 local logger = logging.email {
                                rcpt = "mail@host.com",
                                from = "mail@host.com",
-                               { 
-                                 subject = "[%level] logging.email test", 
+                               {
+                                 subject = "[%level] logging.email test",
                                }, -- headers
 }
 

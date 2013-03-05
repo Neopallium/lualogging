@@ -9,7 +9,7 @@ local logger         = logging.rolling_file(log_filename, max_size, max_index)
 
 -- it will generate the log + max_index backup files
 local size = 0
-while size < total_log_size  do 
+while size < total_log_size  do
     local data = string.format("Test actual size[%d]", size)
     logger:debug(data)
     size = size + string.len(data)
@@ -18,7 +18,7 @@ end
 -- lets test if all files where created
 for i = 1, max_index do
     local file = assert(io.open(log_filename.."."..i, "r"))
-    -- since there is an exact precision on the rolling 
+    -- since there is an exact precision on the rolling
     -- (it can be a little less or a little more than the max_size)
     -- lets just test if the file is empty.
 
