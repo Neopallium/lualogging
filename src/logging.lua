@@ -1,5 +1,6 @@
 -------------------------------------------------------------------------------
 -- includes a new tostring function that handles tables recursively
+-- includes exception/error safe string.format function
 --
 -- @author Danilo Tuler (tuler@ideais.com.br)
 -- @author Andre Carregal (info@keplerproject.org)
@@ -11,7 +12,6 @@
 local type, table, string, _tostring, tonumber = type, table, string, tostring, tonumber
 local select = select
 local error = error
-local format = string.format
 local pairs = pairs
 local ipairs = ipairs
 
@@ -20,7 +20,7 @@ local logging = {
 -- Meta information
 _COPYRIGHT = "Copyright (C) 2004-2013 Kepler Project",
 _DESCRIPTION = "A simple API to use logging features in Lua",
-_VERSION = "LuaLogging 1.3.0",
+_VERSION = "LuaLogging 1.3.1",
 
 -- The DEBUG Level designates fine-grained instring.formational events that are most
 -- useful to debug an application
@@ -49,7 +49,57 @@ for i=1,MAX_LEVELS do
 	LEVEL[LEVEL[i]] = i
 end
 
--- private log function, with support for formating a complex log message.
+-- Exception safe variant of string.format(). This avoids the situation
+-- where a logged message inadvertently crashes a program. Especially
+-- important for applications in production systems.
+-- Special thanks to Tysen Moore for this implementation.
+local function safeFormat(fmt, ...)
+
+    local argIdx = 0
+
+    if fmt == nil then
+        return ""
+    end
+
+    -- Check for more formatters than parameters
+    -- (i.e. Lua exception).
+
+    -- This will convert "%%" to something that will
+    -- not get treated as a valid formatter.
+    fmt = string.gsub(fmt, "(%%%%)", string.char(26))
+
+    -- Now verify each formatter and its argument
+    fmt = string.gsub(fmt, "(%%[cdefgoqsx])",
+            function(sFmt)
+                local ch = string.sub(sFmt, 2) -- fmt char
+
+                argIdx = argIdx + 1
+                if ch == "s" or ch == "q" then
+                    if arg[argIdx] ~= "string" then
+                        arg[argIdx] = tostring(arg[argIdx]) -- change the value
+                    end
+
+                elseif ch == "d" or ch == "x" or
+                       ch == "f" or ch == "e" or ch == "g" or
+                       ch == "o" or ch == "c" then
+                    if type(arg[argIdx]) ~= "number" then
+                        arg[argIdx] = tostring(arg[argIdx]) -- change the value
+                        -- quote it to indicate the problem
+                        sFmt        = "%q"  -- change the formatter
+                    end
+                end
+                return sFmt
+            end)
+
+    fmt = string.gsub(fmt, string.char(26), "%%%%" )
+    return string.format(fmt, unpack(arg))
+
+end
+
+-- Use an exception safe variant of string.format in the logging functions.
+local format = safeFormat
+
+-- private log function, with support for formatting a complex log message.
 local function LOG_MSG(self, level, fmt, ...)
 	local f_type = type(fmt)
 	if f_type == 'string' then
