@@ -54,7 +54,12 @@ local function LOG_MSG(self, level, fmt, ...)
 	local f_type = type(fmt)
 	if f_type == 'string' then
 		if select('#', ...) > 0 then
-			return self:append(level, format(fmt, ...))
+			local status, msg = pcall(format, fmt, ...)
+			if status then
+				return self:append(level, msg)
+			else
+				return self:append(level, "Error formatting log message: " .. msg)
+			end
 		else
 			-- only a single string, no formating needed.
 			return self:append(level, fmt)
