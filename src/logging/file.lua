@@ -29,7 +29,7 @@ local openFileLogger = function (filename, datePattern)
 	end
 end
 
-function logging.file(filename, datePattern, logPattern)
+function logging.file(filename, datePattern, logPattern, logDatePattern)
 	if type(filename) ~= "string" then
 		filename = "lualogging.log"
 	end
@@ -39,7 +39,7 @@ function logging.file(filename, datePattern, logPattern)
 		if not f then
 			return nil, msg
 		end
-		local s = logging.prepareLogMsg(logPattern, os.date(), level, message)
+		local s = logging.prepareLogMsg(logPattern, os.date(logDatePattern), level, message)
 		f:write(s)
 		return true
 	end)
