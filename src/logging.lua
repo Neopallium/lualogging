@@ -67,6 +67,9 @@ local function LOG_MSG(self, level, fmt, ...)
 	elseif f_type == 'function' then
 		-- fmt should be a callable function which returns the message to log
 		return self:append(level, fmt(...))
+	elseif f_type == 'table' and type(fmt.__tostring__) == 'function' then
+		-- make logger similar to print
+		return self:append(level, fmt:__tostring__())
 	end
 	-- fmt is not a string and not a function, just call tostring() on it.
 	return self:append(level, logging.tostring(fmt))
