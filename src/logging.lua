@@ -97,9 +97,10 @@ end
 -- Creates a new logger object
 -- @param append Function used by the logger to append a message with a
 --	log-level to the log stream.
+-- @param defaultLevel String log level to be used by default in the logger.
 -- @return Table representing the new logger object.
 -------------------------------------------------------------------------------
-function logging.new(append)
+function logging.new(append, defaultLevel)
 	if type(append) ~= "function" then
 		return nil, "Appender must be a function."
 	end
@@ -137,7 +138,16 @@ function logging.new(append)
 	end
 
 	-- initialize log level.
-	logger:setLevel(logging.DEBUG)
+	if defaultLevel then
+		for i=1,MAX_LEVELS do
+			if defaultLevel ~= LEVEL[i] then
+				return nil, 'defaultLevel should be either "DEBUG", "INFO", "WARN", "ERROR", "FATAL"'
+			end
+		end
+		logger:setLevel(defaultLevel)
+	else
+		logger:setLevel(logging.DEBUG)
+	end
 	return logger
 end
 
