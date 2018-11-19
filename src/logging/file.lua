@@ -6,26 +6,32 @@
 -- @copyright 2004-2013 Kepler Project
 --
 -------------------------------------------------------------------------------
-
 local logging = require"logging"
+logging_fileHandler = {} -- store the file handlers
 
-local lastFileNameDatePattern
-local lastFileHandler
+function exists(fn)	
+        local f = io.open(fn,"r")	
+        if f ~= nil then	
+                io.close(f)	
+                return true	
+        else	
+                return false	
+        end	
+end
 
-local openFileLogger = function (filename, datePattern)
+function openFileLogger(filename, datePattern)
 	local filename = string.format(filename, os.date(datePattern))
-	if (lastFileNameDatePattern ~= filename) then
+	if logging_fileHandler[filename] == nil or not exists(filename) then
 		local f = io.open(filename, "a")
 		if (f) then
 			f:setvbuf ("line")
-			lastFileNameDatePattern = filename
-			lastFileHandler = f
+			logging_fileHandler[filename] = f
 			return f
 		else
 			return nil, string.format("file `%s' could not be opened for writing", filename)
 		end
 	else
-		return lastFileHandler
+		return logging_fileHandler[filename]
 	end
 end
 
@@ -46,4 +52,3 @@ function logging.file(filename, datePattern, logPattern)
 end
 
 return logging.file
-
