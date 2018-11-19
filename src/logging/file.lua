@@ -9,10 +9,20 @@
 local logging = require"logging"
 logging_fileHandler = {} -- store the file handlers
 
+function exists(fn)	
+        local f = io.open(fn,"r")	
+        if f ~= nil then	
+                io.close(f)	
+                return true	
+        else	
+                return false	
+        end	
+end
+
 function openFileLogger(filename, datePattern)
 	local filename = string.format(filename, os.date(datePattern))
-	if logging_fileHandler[filename] == nil then
-		f = io.open(filename, "a")
+	if logging_fileHandler[filename] == nil or not exists(filename) then
+		local f = io.open(filename, "a")
 		if (f) then
 			f:setvbuf ("line")
 			logging_fileHandler[filename] = f
