@@ -198,7 +198,8 @@ local function tostring(value)
 end
 logging.tostring = tostring
 
-if _VERSION ~= 'Lua 5.2' then
+local luamaj, luamin = _VERSION:match("Lua (%d+)%.(%d+)")
+if luamaj == 5 and luamin < 2 then
 	-- still create 'logging' global for Lua versions < 5.2
 	_G.logging = logging
 end
